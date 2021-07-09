@@ -188,6 +188,7 @@ snippetInput.style.cssText = `width: 400px; border-radius:  20px; resize: none; 
 )*/
 
 snippetPageView.setAttribute('src', `${window.location.origin}/admin/content`)
+snippetPageView.id = "snippetIframe"
 
 snippetUrl.value = 'URL'
 snippetGoBtn.innerHTML = 'GO'
@@ -251,6 +252,8 @@ function changePage() {
 	language = urlLanguage.length === 2 ? urlLanguage : ''
 	initCustomFieldsFlag = false
 	initSeoFieldsFlag = false
+	document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]').checked = false
+
 }
 
 function checkLanguage(languages) {
