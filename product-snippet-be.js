@@ -252,8 +252,12 @@ function changePage() {
 	language = urlLanguage.length === 2 ? urlLanguage : ''
 	initCustomFieldsFlag = false
 	initSeoFieldsFlag = false
-	document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]').checked = false
 
+	// ==============Uncheck by default Generate automatic URL alias==========
+ 	const aliasCheckBox= document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
+	if (aliasCheckBox) {
+		aliasCheckBox.checked = false
+	}
 }
 
 function checkLanguage(languages) {
