@@ -480,6 +480,7 @@ async function editSelect(node, values) {
 				option.removeAttribute('selected')
 				option.setAttribute('selected', 'selected')
 				matchFound = true
+				break
 			}
 		}
 	}
