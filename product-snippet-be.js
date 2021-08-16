@@ -370,7 +370,7 @@ async function setAuthor() {
 async function editEditorsGroup(node, values, numberOfFields = values.length) {
 	const btnNode = node.querySelector('input.paragraphs-icon-button')
 
-	let flag = btnNode.value === 'Bewerken' //'Edit'
+	let flag = btnNode.value === 'Bewerken' || 'Edit'
 
 	if (flag) {
 		clickElement(btnNode)
