@@ -247,10 +247,10 @@ let language = ''
 
 function changePage() {
 	const url = snippetPageView.contentWindow.location.href
-	const urlLanguage = url.split('//')[1].split('/')[1]
+	// const urlLanguage = url.split('//')[1].split('/')[1]
 	snippetUrl.value = url
-	language = urlLanguage.length === 2 ? urlLanguage : ''
-	initCustomFieldsFlag = false
+	// language = urlLanguage.length === 2 ? urlLanguage : ''
+	// initCustomFieldsFlag = false
 	initSeoFieldsFlag = false
 
 	// ==============Uncheck by default Generate automatic URL alias==========
@@ -320,11 +320,11 @@ async function parseDataToArray() {
 async function initFields(fields, flag) {
 	if (!flag) {
 		for (const field of fields) {
-			if (checkLanguage(field.languages)) {
+			// if (checkLanguage(field.languages)) {
 				await eval(
 					`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
 				)
-			}
+			// }
 		}
 	}
 }
