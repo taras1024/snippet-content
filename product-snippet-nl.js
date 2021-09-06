@@ -182,9 +182,6 @@ snippetGoBtn.style.cssText = `border-radius: 0 20px 20px 0; padding:  5px 20px; 
 snippetInput.style.cssText = `width: 400px; border-radius:  20px; resize: none; padding: 4px 10px; outline: none; background-color: #0f0f0f;
 										 border: 1px solid #00385a; color: #fff;`
 								
-snippetInput.addEventListener("focus", function () {
-	this.style.color = "white"  
-});
 /*snippetPageView.setAttribute(
 	'src',
 	'https://live-74999-petcare-purinattt-belgium.pantheonsite.io/fr/node/5016/edit'
