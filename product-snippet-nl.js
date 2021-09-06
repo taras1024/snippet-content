@@ -336,13 +336,13 @@ async function editFields(fields) {
 			(letter) => ` ${letter.toLowerCase()}`
 		)} block ...`
 
-		if (checkLanguage(field.languages)) {
+		// if (checkLanguage(field.languages)) {
 			await eval(
 				`${field.editor}(${field.name}Node,${field.name}Formatter()${
 					field.quantity ? ',' + field.quantity : ''
 				})`
 			)
-		}
+		// }
 	}
 }
 
