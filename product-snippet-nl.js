@@ -183,8 +183,8 @@ snippetInput.style.cssText = `width: 400px; border-radius:  20px; resize: none; 
 										 border: 1px solid #00385a; color: #fff;`
 								
 snippetInput.addEventListener("focus", function () {
-											this.style.backgroundColor = "red";  
-										  });
+	this.style.color = "white"  
+});
 /*snippetPageView.setAttribute(
 	'src',
 	'https://live-74999-petcare-purinattt-belgium.pantheonsite.io/fr/node/5016/edit'
