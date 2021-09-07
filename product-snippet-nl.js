@@ -695,7 +695,7 @@ function GTINFormatter() {
 }
 
 function buyNowFusepumpFormatter() {
-	const copydeckBuyNowFusepump = copydeckData[11].replace(/[^0-9]/gm, '').trim()
+	const copydeckBuyNowFusepump = copydeckData[11].trim() //.replace(/[^0-9]/gm, '').trim()
 	return copydeckBuyNowFusepump.length > 0 && copydeckBuyNowFusepump !== '0'
 		? copydeckBuyNowFusepump
 		: ''
