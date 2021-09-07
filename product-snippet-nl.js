@@ -754,7 +754,7 @@ function productSizeFormatter() {
 				if (val.includes('x')) {
 					return `${val.replace(/[^x0-9\s]/gi, '')}g`
 				} else if (val.includes('kg')) {
-					let parsedVal = val.replace(/[^0-9\.]/gi, '')
+					let parsedVal = val.replace(/[^0-9\,]/gi, '')
 					return `${parsedVal}kg`
 				} else {
 					let parsedVal = parseInt(val.replace(/[^0-9]/gi, ''))
