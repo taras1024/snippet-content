@@ -30,7 +30,7 @@ const configJSON = `{
 	],
 	"copydeck":{
 	  "translations":{
-		  "features":{"fr":"Caractéristiques", "nl":"Kenmerken"},
+		  "features":{"fr":"Caractéristiques", "nl":"Samenstelling"},
 		  "ingredients":{"fr":"Ingrédients", "nl":"Ingrediënten"},
 		  "analyticalConstituents":{"fr":"Nutrition et constituants analytiques", "nl":"Voeding en analytische stoffen"},
 		  "nutritionalAdditives":{"fr":"Additifs nutritionnels", "nl":"Voedingsadditieven"},
@@ -796,9 +796,7 @@ function productOverviewFormatter() {
 			: ''
 	}
 
-	let firstBlock = `<p><strong>${
-		config.copydeck.translations.features[language]
-	}</strong></p> <ul><li>${features[0]
+	let firstBlock = `<p><strong>Kenmerken</strong></p> <ul><li>${features[0]
 		.map((e) => {
 			let element = e.trim()
 			let lastSymbol = element.split('')[element.length - 1]
@@ -845,9 +843,9 @@ function ingredientsAndNutritionFormatter() {
 		: ''
 
 	return [
-		`<p><strong>${config.copydeck.translations.ingredients[language]}</strong></p><p>${copydeckIngredients}</p>`,
-		`<p><strong>${config.copydeck.translations.analyticalConstituents[language]}</strong></p><p>${copydeckNutritionAnalyticalConstituents}</p>
-		 <p><strong>${config.copydeck.translations.nutritionalAdditives[language]}</strong></p><p>${copydeckIngredientsNutritionalAdditives}</p>`,
+		`<p><strong>Samenstelling</strong></p><p>${copydeckIngredients}</p>`,
+		`<p><strong>Analytische bestanddelen</strong></p><p>${copydeckNutritionAnalyticalConstituents}</p>
+		 <p><strong>Nutrionele toevoegingsmiddelen</strong></p><p>${copydeckIngredientsNutritionalAdditives}</p>`,
 	]
 }
 
@@ -855,9 +853,7 @@ function feedingGuideFormatter() {
 	const copydeckIngredients = copydeckData[62]
 
 	return [
-		`<p><strong>${
-			config.copydeck.translations.feedingGuide[language]
-		}</strong></p><p>${copydeckIngredients
+		`<p><strong>Voedingsadvies</strong></p><p>${copydeckIngredients
 			.replace(/["♥]/gi, '')
 			.replace(/<\/?[^>]+(>|$)/g, '')}</p>`,
 	]
