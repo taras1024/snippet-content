@@ -379,6 +379,9 @@ async function editEditorsGroup(node, values, numberOfFields = values.length) {
 		node
 			.querySelector('iframe')
 			.contentWindow.document.querySelector('body').innerHTML = values[0]
+
+			//----------------------------
+
 	}
 
 	const numberOfExtraFields =
@@ -402,6 +405,8 @@ async function editEditorsGroup(node, values, numberOfFields = values.length) {
 		iframe.addEventListener('load', function () {
 			let value = values[index] && index < numberOfFields ? values[index] : ''
 			iframe.contentWindow.document.querySelector('body').innerHTML = value
+
+			addFormatingBtn(iframe)
 		})
 	}
 
@@ -954,3 +959,40 @@ function urlAliasFormatter() {
 /*
  *Snippet Prepare Data end
  */
+
+
+
+ function compositionFormating () {
+	 const compositionFormatingBtn = document.createElement('a')
+	 compositionFormatingBtn.classList.add('cke_button')
+	 compositionFormatingBtn.href = "javascript:void(0)"
+	 compositionFormatingBtn.style.cssText = 'position: absolute; top: 40%; left:110%'
+	 
+	 const node = document.getElementById('edit-field-product-nutrition-wrapper')
+	//node.querySelector('#cke_165').parentNode.appendChild(compositionFormatingBtn)
+	//node.querySelector('.cke_toolbar_last').parentNode.appendChild(compositionFormatingBtn)
+	 node.appendChild(compositionFormatingBtn)
+	 compositionFormatingBtn.addEventListener('click', () => {
+		 let ingredientsInnerHTML = node.querySelector('iframe').contentWindow.document.querySelector('body').innerHTML
+
+	 })
+
+ }
+
+
+function analiticalFormatingBtnHandler (iframe, separator) {
+	// let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
+}
+
+
+function addFormatingBtn(iframe) {
+	const analiticalFormatingBtn = document.createElement('button')
+	analiticalFormatingBtn.innerHTML = 'A-F'
+
+	const prevIframeElement = iframe.previousElementSibling
+	prevIframeElement.parentElement.previousElementSibling.appendChild(analiticalFormatingBtn)
+
+	analiticalFormatingBtn.addEventListener('click', analiticalFormatingBtn(iframe, ';'))
+
+}
