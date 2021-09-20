@@ -1008,7 +1008,7 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlock.style.top = '600px'	
 		msgBlock.style.left = '800px'
 
-		document.body.appendChild(msgBlock)
+		document.querySelector('iframe#snippetIframe').contentWindow.document.body.appendChild(msgBlock)
 	}
 
 	msgBlock.innerHTML = analiticalHTML
