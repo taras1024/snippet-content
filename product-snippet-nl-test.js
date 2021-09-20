@@ -993,6 +993,5 @@ function addFormatingBtn(iframe) {
 	const prevIframeElement = iframe.previousElementSibling
 	prevIframeElement.parentElement.previousElementSibling.appendChild(analiticalFormatingBtn)
 
-	analiticalFormatingBtn.addEventListener('click', analiticalFormatingBtn(iframe, ';'))
-
+	analiticalFormatingBtn.addEventListener('click', analiticalFormatingBtnHandler(iframe, ';'))
 }
