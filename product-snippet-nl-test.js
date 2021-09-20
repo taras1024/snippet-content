@@ -1002,7 +1002,7 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlock = document.createElement('div')
 		msgBlock.id = 'msgBlock'
 
-		msgBlock.style.cssText = 'width: 400px; height: 300px; border: 1px solid black;'
+		msgBlock.style.cssText = 'width: 400px; border: 1px solid black;'
 		
 		msgBlock.style.position = 'fixed'
 		msgBlock.style.top = '600px'	
