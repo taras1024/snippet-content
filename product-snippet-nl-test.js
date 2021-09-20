@@ -997,13 +997,19 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 
 	let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 
-	const msgBlock = document.createElement('div')
+	msgBlock = document.getElementById('msgBlock')
+	if(!msgBlock) {
+		msgBlock = document.createElement('div')
+		msgBlock.id = 'msgBlock'
 
-	msgBlock.style.cssText = 'width: 400px; height: 300px; border: 1px solid black;'
-	
-	msgBlock.style.position = 'fixed'
-	msgBlock.style.top = '600px'	
-	msgBlock.style.left = '800px'
+		msgBlock.style.cssText = 'width: 400px; height: 300px; border: 1px solid black;'
+		
+		msgBlock.style.position = 'fixed'
+		msgBlock.style.top = '600px'	
+		msgBlock.style.left = '800px'
+
+		document.body.appendChild(msgBlock)
+	}
 	
 	msgBlock.innerHTML = analiticalHTML
 	
