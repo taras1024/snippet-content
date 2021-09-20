@@ -1008,12 +1008,11 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlock.style.top = '600px'	
 		msgBlock.style.left = '800px'
 
-		msgBlock.innerHTML = analiticalHTML
-
 		document.body.appendChild(msgBlock)
 	}
 
-	
+	msgBlock.innerHTML = analiticalHTML
+
 
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
 }
