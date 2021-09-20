@@ -1004,7 +1004,6 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlock.style.cssText = 'border: 1px solid black; margin-right: 2.5em; padding 0.25em 1.25em; background-color: #eaec42; min-height: 200px;'
 		msgBlock.style.position = 'fixed'
 		msgBlock.style.top = '500px'	
-		// msgBlock.style.right = '80px'
 
 		msgBlockHeader = document.createElement('h3')
 		msgBlockHeader.style.cssText = 'margin:0; background-color: red; color: white; padding: 10px;'
