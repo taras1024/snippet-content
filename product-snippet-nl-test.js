@@ -980,18 +980,19 @@ function urlAliasFormatter() {
  }
 
 
-function analiticalFormatingBtnHandler (iframe, separator) {
-	// let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
-	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
-}
-
 
 function addFormatingBtn(iframe) {
-	const analiticalFormatingBtn = document.createElement('button')
+	const analiticalFormatingBtn = document.createElement('a')
 	analiticalFormatingBtn.innerHTML = 'A-F'
+	analiticalFormatingBtn.href = "javascript:void(0)"
 
 	const prevIframeElement = iframe.previousElementSibling
 	prevIframeElement.parentElement.previousElementSibling.appendChild(analiticalFormatingBtn)
 
 	analiticalFormatingBtn.addEventListener('click', analiticalFormatingBtnHandler(iframe, ';'))
+}
+
+function analiticalFormatingBtnHandler (iframe, separator) {
+	// let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
 }
