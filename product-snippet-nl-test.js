@@ -984,15 +984,16 @@ function urlAliasFormatter() {
 function addFormatingBtn(iframe) {
 	const analiticalFormatingBtn = document.createElement('a')
 	analiticalFormatingBtn.innerHTML = 'A-F'
-	analiticalFormatingBtn.href = "javascript:void(0)"
+	// analiticalFormatingBtn.href = "javascript:void(0)"
 
 	const prevIframeElement = iframe.previousElementSibling
 	prevIframeElement.parentElement.previousElementSibling.appendChild(analiticalFormatingBtn)
 
-	analiticalFormatingBtn.addEventListener('click', analiticalFormatingBtnHandler(iframe, ';'))
+	analiticalFormatingBtn.addEventListener('click', analiticalFormatingBtnHandler(event, iframe, ';'))
 }
 
-function analiticalFormatingBtnHandler (iframe, separator) {
+function analiticalFormatingBtnHandler (event, iframe, separator) {
+	e.prevent
 	// let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
 }
