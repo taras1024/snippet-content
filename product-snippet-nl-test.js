@@ -1001,12 +1001,16 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 	if(!msgBlock) {
 		msgBlock = document.createElement('div')
 		msgBlock.id = 'msgBlock'
-
-		msgBlock.style.cssText = 'border: 1px solid black; margin-right: 2em;'
-		
+		msgBlock.style.cssText = 'border: 1px solid black; margin-right: 2.5em; padding 0.25em 1.25em; background-color: #eaec42; min-height: 200px;'
 		msgBlock.style.position = 'fixed'
 		msgBlock.style.top = '500px'	
-		msgBlock.style.right = '80px'
+		// msgBlock.style.right = '80px'
+
+		msgBlockHeader = document.createElement('h3')
+		msgBlockHeader.innerHTML = 'Check content window'
+		msgBlockParagraph = document.createElement('p')
+
+		msgBlock.appendChild(msgBlockHeader, msgBlockParagraph)
 
 		document.querySelector('iframe#snippetIframe').contentWindow.document
 		.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
