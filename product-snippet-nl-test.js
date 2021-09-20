@@ -1007,8 +1007,11 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		// msgBlock.style.right = '80px'
 
 		msgBlockHeader = document.createElement('h3')
-		msgBlockHeader.innerHTML = 'Check content window'
+		msgBlockHeader.style.cssText = 'margin:0; background-color: red; color: white; padding: 10px;'
+		msgBlockHeader.innerHTML = 'Check content window!!!'
+
 		msgBlockParagraph = document.createElement('p')
+		msgBlockParagraph.style.cssText = 'padding: 10px;'
 
 		msgBlock.appendChild(msgBlockHeader)
 		msgBlock.appendChild(msgBlockParagraph)
