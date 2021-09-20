@@ -984,7 +984,6 @@ function urlAliasFormatter() {
 function addFormatingBtn(iframe) {
 	const analiticalFormatingBtn = document.createElement('a')
 	analiticalFormatingBtn.innerHTML = 'A-F'
-	// analiticalFormatingBtn.href = "javascript:void(0)"
 
 	const prevIframeElement = iframe.previousElementSibling
 	prevIframeElement.parentElement.previousElementSibling.appendChild(analiticalFormatingBtn)
@@ -997,7 +996,8 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 
 	let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 
-	msgBlock = document.getElementById('msgBlock')
+	// msgBlock = document.getElementById('msgBlock')
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
 		msgBlock = document.createElement('div')
 		msgBlock.id = 'msgBlock'
@@ -1014,5 +1014,5 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 	msgBlock.innerHTML = analiticalHTML
 
 
-	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
+	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML.split(separator).join(`${separator}<br>`)
 }
