@@ -996,6 +996,6 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 	event.preventDefault()
 
 	alert('Message')
-	// let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
 }
