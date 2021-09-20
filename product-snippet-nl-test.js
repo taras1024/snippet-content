@@ -993,7 +993,7 @@ function addFormatingBtn(iframe) {
 }
 
 function analiticalFormatingBtnHandler (event, iframe, separator) {
-	e.prevent
+	event.preventDefault()
 	// let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
 }
