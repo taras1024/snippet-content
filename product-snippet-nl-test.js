@@ -1016,7 +1016,7 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
 	}
 
-	msgBlock.innerHTML = analiticalHTML
+	msgBlock.querySelector('p').innerHTML = analiticalHTML
 
 
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML.split(separator).join(`${separator}<br>`)
