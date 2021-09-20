@@ -1010,7 +1010,8 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlockHeader.innerHTML = 'Check content window'
 		msgBlockParagraph = document.createElement('p')
 
-		msgBlock.appendChild(msgBlockHeader, msgBlockParagraph)
+		msgBlock.appendChild(msgBlockHeader)
+		msgBlock.appendChild(msgBlockParagraph)
 
 		document.querySelector('iframe#snippetIframe').contentWindow.document
 		.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
