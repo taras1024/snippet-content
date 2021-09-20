@@ -995,7 +995,18 @@ function addFormatingBtn(iframe) {
 function analiticalFormatingBtnHandler (event, iframe, separator) {
 	event.preventDefault()
 
-	alert('Message')
 	let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+
+	const msgBlock = document.createElement('div')
+
+	msgBlock.style.cssText = 'width: 400px; height: 300px; border: 1px solid black;'
+	
+	msgBlock.style.position = 'fixed'
+	msgBlock.style.top = '600px'	
+	msgBlock.style.left = '800px'
+	
+	msgBlock.innerHTML = analiticalHTML
+	
+
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML + analiticalHTML.split(separator).join(`${separator}<br>`)
 }
