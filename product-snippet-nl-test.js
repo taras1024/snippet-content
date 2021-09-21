@@ -406,7 +406,14 @@ async function editEditorsGroup(node, values, numberOfFields = values.length) {
 			let value = values[index] && index < numberOfFields ? values[index] : ''
 			iframe.contentWindow.document.querySelector('body').innerHTML = value
 
-			addFormatingBtn(iframe)
+			if(node.id === "edit-field-product-nutrition-wrapper") {
+				if(index === 0) {
+					addFormatingBtn(iframe, 'composition')
+				} else if(index === 1) {
+					addFormatingBtn(iframe, 'analitical')
+					addFormatingBtn(iframe, 'additives')
+				}
+			}
 		})
 	}
 
@@ -962,6 +969,9 @@ function urlAliasFormatter() {
 
 
 
+
+/*------------Aditional functionality------------*/ 
+
  function compositionFormating () {
 	 const compositionFormatingBtn = document.createElement('a')
 	 compositionFormatingBtn.classList.add('cke_button')
@@ -974,22 +984,38 @@ function urlAliasFormatter() {
 	 node.appendChild(compositionFormatingBtn)
 	 compositionFormatingBtn.addEventListener('click', () => {
 		 let ingredientsInnerHTML = node.querySelector('iframe').contentWindow.document.querySelector('body').innerHTML
-
 	 })
 
  }
 
 
+function addFormatingBtn(iframe, contentTypeStr) {
+	const formatingBtn = document.createElement('a')
+	formatingBtn.className = 'cke_button'
 
-function addFormatingBtn(iframe) {
-	const analiticalFormatingBtn = document.createElement('a')
-	analiticalFormatingBtn.innerHTML = 'A-F'
-
-	const prevIframeElement = iframe.previousElementSibling
-	prevIframeElement.parentElement.previousElementSibling.appendChild(analiticalFormatingBtn)
-
-	analiticalFormatingBtn.addEventListener('click', () => analiticalFormatingBtnHandler(event, iframe, ';'))
+	if(contentTypeStr === "composition") {
+		formatingBtn.innerHTML = 'cF'  
+		const prevIframeElement = iframe.previousElementSibling
+		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
+		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(event))
+	} else if(contentTypeStr === "analitical") {
+		formatingBtn.innerHTML = 'aF'  
+		const prevIframeElement = iframe.previousElementSibling
+		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
+		formatingBtn.addEventListener('click', () => analiticalFormatingBtnHandler(event, iframe, ';'))
+	} else if(contentTypeStr === "additives") {
+		formatingBtn.innerHTML = 'adF'  
+		const prevIframeElement = iframe.previousElementSibling
+		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
+		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler())
+	}
 }
+
+function compositionFormatingBtnHandler (event) {
+	event.preventDefault()
+	alert('composition')
+}
+
 
 function analiticalFormatingBtnHandler (event, iframe, separator) {
 	event.preventDefault()
@@ -1027,6 +1053,7 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 
 		msgBlockClose = document.createElement('span')
 		msgBlockClose.innerHTML = '✕'
+		msgBlockClose.style.cursor = 'pointer'
 
 		msgBlockHeaderWrapper.appendChild(msgBlockHeader)
 		msgBlockHeaderWrapper.appendChild(msgBlockClose)
@@ -1050,3 +1077,14 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML.split(separator).join(`${separator}<br>`)
 }
+
+function additivesFormatingBtnHandler () {
+	event.preventDefault()
+	alert('additives')
+}
+
+
+
+// id="edit-field-product-overview-wrapper"
+// id="edit-field-product-nutrition-wrapper"
+// id="edit-field-product-feeding-guide-wrapper"
