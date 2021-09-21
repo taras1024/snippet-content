@@ -303,6 +303,7 @@ snippetAddAllBtn.addEventListener('click', async function () {
 	snippetLoaderContainer.style.display = 'none'
 	initCustomFieldsFlag = true
 	initSeoFieldsFlag = true
+	createMessageWindow()
 })
 
 let copydeckAllData = []
@@ -1089,7 +1090,7 @@ function createMessageWindow () {
 	// msgBlockClose.addEventListener('click', () => msgBlock.style.display = 'none')
 
 	msgBlockClose.addEventListener('click', () => hideMessageWindow())
-	
+
 	msgBlockParagraph = document.createElement('p')
 	msgBlockParagraph.style.cssText = 'padding: 10px;'
 	msgBlock.appendChild(msgBlockHeaderWrapper)
