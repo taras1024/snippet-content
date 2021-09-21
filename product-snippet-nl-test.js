@@ -1032,7 +1032,7 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlockParagraph = document.createElement('p')
 		msgBlockParagraph.style.cssText = 'padding: 10px;'
 
-		msgBlock.appendChild(msgBlockHeader)
+		msgBlock.appendChild(msgBlockHeaderWrapper)
 		msgBlock.appendChild(msgBlockParagraph)
 
 		document.querySelector('iframe#snippetIframe').contentWindow.document
