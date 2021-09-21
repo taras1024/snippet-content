@@ -996,7 +996,6 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 
 	let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 
-	// msgBlock = document.getElementById('msgBlock')
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
 		msgBlock = document.createElement('div')
