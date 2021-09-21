@@ -997,12 +997,12 @@ function addFormatingBtn(iframe, contentTypeStr) {
 		formatingBtn.innerHTML = 'cF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(event))
+		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler())
 	} else if(contentTypeStr === "analitical") {
 		formatingBtn.innerHTML = 'aF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => analiticalFormatingBtnHandler(event, iframe, ';'))
+		formatingBtn.addEventListener('click', () => analiticalFormatingBtnHandler(iframe, ';'))
 	} else if(contentTypeStr === "additives") {
 		formatingBtn.innerHTML = 'adF'  
 		const prevIframeElement = iframe.previousElementSibling
@@ -1011,79 +1011,104 @@ function addFormatingBtn(iframe, contentTypeStr) {
 	}
 }
 
-function compositionFormatingBtnHandler (event) {
+function compositionFormatingBtnHandler (iframe) {
 	event.preventDefault()
 	alert('composition')
+	let compositionHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	if(!msgBlock) {
+		alert('Check window does not exist!!!')
+	} else {
+		setMessageWindowHTML(compositionHTML)
+	}
 }
 
 
-function analiticalFormatingBtnHandler (event, iframe, separator) {
+function analiticalFormatingBtnHandler (iframe, separator) {
 	event.preventDefault()
-
 	let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
-		msgBlock = document.createElement('div')
-		msgBlock.id = 'msgBlock'
-		msgBlock.style.cssText = `
-			border: 1px solid black; 
-			padding 0.25em 1.25em; 
-			background-color: #eaec42; 
-			width: 33.2%;
-			min-height: 200px;
-			max-height: 400px;
-			overflow: auto;
-		`
-		msgBlock.style.position = 'fixed'
-		msgBlock.style.top = '500px'	
-
-		msgBlockHeaderWrapper = document.createElement('div')
-		msgBlockHeaderWrapper.style.cssText = `
-			background-color: red; 
-			color: white; 
-			padding: 10px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		`
-		msgBlockHeader = document.createElement('h3')
-		msgBlockHeader.style.margin = '0'
-		msgBlockHeader.innerHTML = 'Check content window!!!'
-
-		msgBlockClose = document.createElement('span')
-		msgBlockClose.innerHTML = '✕'
-		msgBlockClose.style.cursor = 'pointer'
-
-		msgBlockHeaderWrapper.appendChild(msgBlockHeader)
-		msgBlockHeaderWrapper.appendChild(msgBlockClose)
-
-		msgBlockClose.addEventListener('click', () => msgBlock.style.display = 'none')
-
-		msgBlockParagraph = document.createElement('p')
-		msgBlockParagraph.style.cssText = 'padding: 10px;'
-
-		msgBlock.appendChild(msgBlockHeaderWrapper)
-		msgBlock.appendChild(msgBlockParagraph)
-
-		document.querySelector('iframe#snippetIframe').contentWindow.document
-		.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
+		alert('Check window does not exist!!!')
+	} else {
+		setMessageWindowHTML(analiticalHTML)
+		// msgBlock.style.display = 'block'
+		// msgBlock.querySelector('p').innerHTML = analiticalHTML
 	}
-	else {
-		msgBlock.style.display = 'block'
-	}
-
-	msgBlock.querySelector('p').innerHTML = analiticalHTML
 
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML.split(separator).join(`${separator}<br>`)
 }
 
-function additivesFormatingBtnHandler () {
+function additivesFormatingBtnHandler (iframe) {
 	event.preventDefault()
 	alert('additives')
+	let additivesHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	if(!msgBlock) {
+		alert('Check window does not exist!!!')
+	} else {
+		setMessageWindowHTML(additivesnHTML)
+	}
+}
+
+function createMessageWindow () {
+	msgBlock = document.createElement('div')
+	msgBlock.id = 'msgBlock'
+	msgBlock.style.cssText = `
+		border: 1px solid black; 
+		padding 0.25em 1.25em; 
+		background-color: #eaec42; 
+		width: 33.2%;
+		min-height: 200px;
+		max-height: 400px;
+		overflow: auto;
+		position: fixed;
+		top: 10vh;
+		display: none;
+	`	
+	msgBlockHeaderWrapper = document.createElement('div')
+	msgBlockHeaderWrapper.style.cssText = `
+		background-color: red; 
+		color: white; 
+		padding: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	`
+	msgBlockHeader = document.createElement('h3')
+	msgBlockHeader.style.margin = '0'
+	msgBlockHeader.innerHTML = 'Check content window!!!'
+	msgBlockClose = document.createElement('span')
+	msgBlockClose.innerHTML = '✕'
+	msgBlockClose.style.cursor = 'pointer'
+	msgBlockHeaderWrapper.appendChild(msgBlockHeader)
+	msgBlockHeaderWrapper.appendChild(msgBlockClose)
+	// msgBlockClose.addEventListener('click', () => msgBlock.style.display = 'none')
+
+	msgBlockClose.addEventListener('click', () => hideMessageWindow())
+	
+	msgBlockParagraph = document.createElement('p')
+	msgBlockParagraph.style.cssText = 'padding: 10px;'
+	msgBlock.appendChild(msgBlockHeaderWrapper)
+	msgBlock.appendChild(msgBlockParagraph)
+	document.querySelector('iframe#snippetIframe').contentWindow.document
+	.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
 }
 
 
+function setMessageWindowHTML(messageHTML) {
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	msgBlock.style.display = 'block'
+	msgBlock.querySelector('p').innerHTML = messageHTML
+}
+
+function hideMessageWindow() {
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	msgBlock.style.display = 'none'
+}
 
 // id="edit-field-product-overview-wrapper"
 // id="edit-field-product-nutrition-wrapper"
