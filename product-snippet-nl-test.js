@@ -998,7 +998,7 @@ function addFormatingBtn(iframe, contentTypeStr) {
 		formatingBtn.innerHTML = 'cF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler())
+		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe))
 	} else if(contentTypeStr === "analitical") {
 		formatingBtn.innerHTML = 'aF'  
 		const prevIframeElement = iframe.previousElementSibling
@@ -1008,7 +1008,7 @@ function addFormatingBtn(iframe, contentTypeStr) {
 		formatingBtn.innerHTML = 'adF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler())
+		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler(iframe))
 	}
 }
 
