@@ -1013,10 +1013,10 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlock.style.top = '500px'	
 
 		msgBlockHeaderWrapper = document.createElement('div')
-		msgBlockHeaderWrapper.innerHTML = `
-			<h3>Check content window!!!</h3>
-			<span>✕</span>
-		`
+		// msgBlockHeaderWrapper.innerHTML = `
+		// 	<h3>Check content window!!!</h3>
+		// 	<span>✕</span>
+		// `
 		msgBlockHeaderWrapper.style.cssText = `
 			background-color: red; 
 			color: white; 
@@ -1025,9 +1025,17 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 			justify-content: space-between;
 			align-items: center;
 		`
-		// msgBlockHeader = document.createElement('h3')
-		// msgBlockHeader.style.cssText = 'margin:0; background-color: red; color: white; padding: 10px;'
-		// msgBlockHeader.innerHTML = 'Check content window!!!'
+		msgBlockHeader = document.createElement('h3')
+		msgBlockHeader.style.margin = '0'
+		msgBlockHeader.innerHTML = 'Check content window!!!'
+
+		msgBlockClose = document.createElement('span')
+		msgBlockClose.innerHTML = '✕'
+
+		msgBlockHeaderWrapper.appendChild(msgBlockHeader)
+		msgBlockHeaderWrapper.appendChild(msgBlockClose)
+
+		msgBlockClose.addEventListener('click', () => msgBlock.style.display = 'none')
 
 		msgBlockParagraph = document.createElement('p')
 		msgBlockParagraph.style.cssText = 'padding: 10px;'
@@ -1037,6 +1045,9 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 
 		document.querySelector('iframe#snippetIframe').contentWindow.document
 		.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
+	}
+	else {
+		msgBlock.style.display = 'block'
 	}
 
 	msgBlock.querySelector('p').innerHTML = analiticalHTML
