@@ -1013,10 +1013,6 @@ function analiticalFormatingBtnHandler (event, iframe, separator) {
 		msgBlock.style.top = '500px'	
 
 		msgBlockHeaderWrapper = document.createElement('div')
-		// msgBlockHeaderWrapper.innerHTML = `
-		// 	<h3>Check content window!!!</h3>
-		// 	<span>✕</span>
-		// `
 		msgBlockHeaderWrapper.style.cssText = `
 			background-color: red; 
 			color: white; 
