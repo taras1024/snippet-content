@@ -973,23 +973,6 @@ function urlAliasFormatter() {
 
 /*------------Aditional functionality------------*/ 
 
- function compositionFormating () {
-	 const compositionFormatingBtn = document.createElement('a')
-	 compositionFormatingBtn.classList.add('cke_button')
-	 compositionFormatingBtn.href = "javascript:void(0)"
-	 compositionFormatingBtn.style.cssText = 'position: absolute; top: 40%; left:110%'
-	 
-	 const node = document.getElementById('edit-field-product-nutrition-wrapper')
-	//node.querySelector('#cke_165').parentNode.appendChild(compositionFormatingBtn)
-	//node.querySelector('.cke_toolbar_last').parentNode.appendChild(compositionFormatingBtn)
-	 node.appendChild(compositionFormatingBtn)
-	 compositionFormatingBtn.addEventListener('click', () => {
-		 let ingredientsInnerHTML = node.querySelector('iframe').contentWindow.document.querySelector('body').innerHTML
-	 })
-
- }
-
-
 function addFormatingBtn(iframe, contentTypeStr) {
 	const formatingBtn = document.createElement('a')
 	formatingBtn.className = 'cke_button'
@@ -1014,14 +997,13 @@ function addFormatingBtn(iframe, contentTypeStr) {
 
 function compositionFormatingBtnHandler (iframe) {
 	event.preventDefault()
-	alert('composition')
 	let compositionHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
 		alert('Check window does not exist!!!')
 	} else {
-		setMessageWindowHTML(compositionHTML)
+		setMessageWindowHTML('Composition Content', compositionHTML)
 	}
 }
 
@@ -1034,26 +1016,26 @@ function analiticalFormatingBtnHandler (iframe, separator) {
 	if(!msgBlock) {
 		alert('Check window does not exist!!!')
 	} else {
-		setMessageWindowHTML(analiticalHTML)
-		// msgBlock.style.display = 'block'
-		// msgBlock.querySelector('p').innerHTML = analiticalHTML
+		setMessageWindowHTML('Analytical constituents Content', analiticalHTML)
 	}
 
 	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML.split(separator).join(`${separator}<br>`)
 }
 
+
 function additivesFormatingBtnHandler (iframe) {
 	event.preventDefault()
 	alert('additives')
-	let additivesHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	let additivesHTML = iframe.contentWindow.document.querySelector('body p:nth-child(4)').innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
 		alert('Check window does not exist!!!')
 	} else {
-		setMessageWindowHTML(additivesnHTML)
+		setMessageWindowHTML('Nutritional additives Content', additivesHTML)
 	}
 }
+
 
 function createMessageWindow () {
 	msgBlock = document.createElement('div')
@@ -1087,22 +1069,31 @@ function createMessageWindow () {
 	msgBlockClose.style.cursor = 'pointer'
 	msgBlockHeaderWrapper.appendChild(msgBlockHeader)
 	msgBlockHeaderWrapper.appendChild(msgBlockClose)
-	// msgBlockClose.addEventListener('click', () => msgBlock.style.display = 'none')
 
 	msgBlockClose.addEventListener('click', () => hideMessageWindow())
 
+	msgBlockContentTitle = document.createElement('h4')
+	msgBlockContentTitle.innerHTML = 'Content Title'
+	msgBlockContentTitle.style.backgroundColor = 'green' 
+	msgBlockContentTitle.style.color = 'white' 
+
 	msgBlockParagraph = document.createElement('p')
 	msgBlockParagraph.style.cssText = 'padding: 10px;'
+
 	msgBlock.appendChild(msgBlockHeaderWrapper)
+	msgBlock.appendChild(msgBlockContentTitle)
 	msgBlock.appendChild(msgBlockParagraph)
+
 	document.querySelector('iframe#snippetIframe').contentWindow.document
 	.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
 }
 
 
-function setMessageWindowHTML(messageHTML) {
+function setMessageWindowHTML(messageContentTitle, messageHTML) {
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	msgBlock.style.display = 'block'
+
+	msgBlock.querySelector('h4').innerHTML = messageContentTitle
 	msgBlock.querySelector('p').innerHTML = messageHTML
 }
 
