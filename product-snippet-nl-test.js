@@ -1027,7 +1027,7 @@ function analyticalFormatingBtnHandler (iframe, separator) {
 function additivesFormatingBtnHandler (iframe, separator) {
 	event.preventDefault()
 	let additivesParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(4)')
-	let additivesHTML = additivesNode.innerHTML
+	let additivesHTML = additivesParagraph.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
