@@ -1025,7 +1025,6 @@ function analiticalFormatingBtnHandler (iframe, separator) {
 
 function additivesFormatingBtnHandler (iframe) {
 	event.preventDefault()
-	alert('additives')
 	let additivesHTML = iframe.contentWindow.document.querySelector('body p:nth-child(4)').innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
@@ -1054,15 +1053,18 @@ function createMessageWindow () {
 	`	
 	msgBlockHeaderWrapper = document.createElement('div')
 	msgBlockHeaderWrapper.style.cssText = `
-		background-color: red; 
-		color: white; 
+		background-color: #FF0000; 
+		color: #FFFFFF; 
 		padding: 10px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	`
 	msgBlockHeader = document.createElement('h3')
-	msgBlockHeader.style.margin = '0'
+	msgBlockHeader.style.cssText = `
+		margin: 0;
+		letter-spacing: 2px;
+	`
 	msgBlockHeader.innerHTML = 'Check content window!!!'
 	msgBlockClose = document.createElement('span')
 	msgBlockClose.innerHTML = '✕'
@@ -1074,11 +1076,19 @@ function createMessageWindow () {
 
 	msgBlockContentTitle = document.createElement('h4')
 	msgBlockContentTitle.innerHTML = 'Content Title'
-	msgBlockContentTitle.style.backgroundColor = 'green' 
-	msgBlockContentTitle.style.color = 'white' 
+	msgBlockContentTitle.style.cssText = `
+		background-color: #69AA00; 
+		color: #FFFFFF; 
+		margin: 0;
+		padding: 10px;
+		letter-spacing: 2px;
+	`
 
 	msgBlockParagraph = document.createElement('p')
-	msgBlockParagraph.style.cssText = 'padding: 10px;'
+	msgBlockParagraph.style.cssText = `
+		padding: 10px;
+		font-size: 14px;
+	`
 
 	msgBlock.appendChild(msgBlockHeaderWrapper)
 	msgBlock.appendChild(msgBlockContentTitle)
