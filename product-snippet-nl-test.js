@@ -411,7 +411,7 @@ async function editEditorsGroup(node, values, numberOfFields = values.length) {
 				if(index === 0) {
 					addFormatingBtn(iframe, 'composition')
 				} else if(index === 1) {
-					addFormatingBtn(iframe, 'analitical')
+					addFormatingBtn(iframe, 'analytical')
 					addFormatingBtn(iframe, 'additives')
 				}
 			}
@@ -982,16 +982,16 @@ function addFormatingBtn(iframe, contentTypeStr) {
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
 		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe))
-	} else if(contentTypeStr === "analitical") {
+	} else if(contentTypeStr === "analytical") {
 		formatingBtn.innerHTML = 'aF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => analiticalFormatingBtnHandler(iframe, ';'))
+		formatingBtn.addEventListener('click', () => analyticalFormatingBtnHandler(iframe, ';'))
 	} else if(contentTypeStr === "additives") {
 		formatingBtn.innerHTML = 'adF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler(iframe))
+		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler(iframe, ';'))
 	}
 }
 
@@ -1008,24 +1008,26 @@ function compositionFormatingBtnHandler (iframe) {
 }
 
 
-function analiticalFormatingBtnHandler (iframe, separator) {
+function analyticalFormatingBtnHandler (iframe, separator) {
 	event.preventDefault()
-	let analiticalHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	let analyticalParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)')
+	let analyticalHTML = analyticalParagraph.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
 		alert('Check window does not exist!!!')
 	} else {
-		setMessageWindowHTML('Analytical constituents Content', analiticalHTML)
+		setMessageWindowHTML('Analytical constituents Content', analyticalHTML)
 	}
 
-	iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML = analiticalHTML.split(separator).join(`${separator}<br>`)
+	analyticalParagraph.innerHTML = analyticalHTML.split(separator).join(`${separator}<br>`)
 }
 
 
-function additivesFormatingBtnHandler (iframe) {
+function additivesFormatingBtnHandler (iframe, separator) {
 	event.preventDefault()
-	let additivesHTML = iframe.contentWindow.document.querySelector('body p:nth-child(4)').innerHTML
+	let additivesParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(4)')
+	let additivesHTML = additivesNode.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
@@ -1033,6 +1035,10 @@ function additivesFormatingBtnHandler (iframe) {
 	} else {
 		setMessageWindowHTML('Nutritional additives Content', additivesHTML)
 	}
+
+	// let tmpAdditivesStr = 
+
+	additivesParagraph.innerHTML = additivesHTML.replace('IU/kg:', 'IU/kg:<br>').replace('mg/kg:', '<br>mg/kg: <br>').split(`${separator}`).join(`${separator}<br>`)
 }
 
 
