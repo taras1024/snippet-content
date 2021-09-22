@@ -997,7 +997,7 @@ function addFormatingBtn(iframe, contentTypeStr) {
 
 function compositionFormatingBtnHandler (iframe) {
 	event.preventDefault()
-	let compositionParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	let compositionParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)')
 	let compositionHTML = compositionParagraph.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
