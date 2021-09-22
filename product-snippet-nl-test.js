@@ -997,7 +997,8 @@ function addFormatingBtn(iframe, contentTypeStr) {
 
 function compositionFormatingBtnHandler (iframe) {
 	event.preventDefault()
-	let compositionHTML = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	let compositionParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)').innerHTML
+	let compositionHTML = compositionParagraph.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
 	if(!msgBlock) {
@@ -1005,6 +1006,14 @@ function compositionFormatingBtnHandler (iframe) {
 	} else {
 		setMessageWindowHTML('Composition Content', compositionHTML)
 	}
+
+	let matchesArr = [compositionHTML.matchAll(/\([^)]*\)/g]
+	let tmpStr = compositionHTML
+
+	for(let m of matchesArr) {
+		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(';', '^='))    
+	}
+	compositionParagraph.innerHTML = tmpStr.split(';').join(';<br>').replaceAll('^=', ';')
 }
 
 
