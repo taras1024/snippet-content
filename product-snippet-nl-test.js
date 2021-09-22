@@ -1007,12 +1007,13 @@ function compositionFormatingBtnHandler (iframe) {
 		setMessageWindowHTML('Composition Content', compositionHTML)
 	}
 
-	let matchesArr = [compositionHTML.matchAll(/\([^)]*\)/g]
+	let matchesArr = [compositionHTML.matchAll(/\([^)]*\)/g)]
 	let tmpStr = compositionHTML
 
 	for(let m of matchesArr) {
 		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(';', '^='))    
 	}
+
 	compositionParagraph.innerHTML = tmpStr.split(';').join(';<br>').replaceAll('^=', ';')
 }
 
