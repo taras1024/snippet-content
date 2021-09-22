@@ -1036,8 +1036,6 @@ function additivesFormatingBtnHandler (iframe, separator) {
 		setMessageWindowHTML('Nutritional additives Content', additivesHTML)
 	}
 
-	// let tmpAdditivesStr = 
-
 	additivesParagraph.innerHTML = additivesHTML.replace('IU/kg:', 'IU/kg:<br>').replace('mg/kg:', '<br>mg/kg: <br>').split(`${separator}`).join(`${separator}<br>`)
 }
 
