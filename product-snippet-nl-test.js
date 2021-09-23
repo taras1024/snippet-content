@@ -280,6 +280,7 @@ snippetAddCustomBtn.addEventListener('click', async function () {
 	setAuthor()
 	snippetLoaderContainer.style.display = 'none'
 	initCustomFieldsFlag = true
+	createMessageWindow()
 })
 
 snippetAddSeoBtn.addEventListener('click', async function () {
@@ -290,6 +291,7 @@ snippetAddSeoBtn.addEventListener('click', async function () {
 	setAuthor()
 	snippetLoaderContainer.style.display = 'none'
 	initSeoFieldsFlag = true
+	createMessageWindow()
 })
 
 snippetAddAllBtn.addEventListener('click', async function () {
@@ -971,7 +973,10 @@ function urlAliasFormatter() {
 
 
 
-/*------------Aditional functionality------------*/ 
+/*------------Aditional functionality------------
+-----Buttons for Composition, Analytical Constituents,
+-----Nutrition Additives fields, that format content
+-----inside those html blocks------------------- */ 
 
 function addFormatingBtn(iframe, contentTypeStr) {
 	const formatingBtn = document.createElement('a')
@@ -981,7 +986,7 @@ function addFormatingBtn(iframe, contentTypeStr) {
 		formatingBtn.innerHTML = 'cF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe))
+		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe, ';'))
 	} else if(contentTypeStr === "analytical") {
 		formatingBtn.innerHTML = 'aF'  
 		const prevIframeElement = iframe.previousElementSibling
@@ -995,7 +1000,7 @@ function addFormatingBtn(iframe, contentTypeStr) {
 	}
 }
 
-function compositionFormatingBtnHandler (iframe) {
+function compositionFormatingBtnHandler (iframe, separator) {
 	event.preventDefault()
 	let compositionParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)')
 	let compositionHTML = compositionParagraph.innerHTML
@@ -1007,17 +1012,19 @@ function compositionFormatingBtnHandler (iframe) {
 		setMessageWindowHTML('Composition Content', compositionHTML)
 	}
 
+	//solution for case when separator present in brackets content
 	let matchesArr = [...compositionHTML.matchAll(/\([^)]*\)/g)]
 	let tmpStr = compositionHTML
 
 	for(let m of matchesArr) {
-		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(';', '^='))    
+		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(`${separator}`, '^='))    
 	}
+	//-----------------------------------------------------------
 
 	// tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase()))
 	// p.innerHTML = tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase())).join(';<br>').replaceAll('^=', ';')
 
-	compositionParagraph.innerHTML = tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase())).join(';<br>').replaceAll('^=', ';') //tmpStr.split(';').join(';<br>').replaceAll('^=', ';')
+	compositionParagraph.innerHTML = tmpStr.split(`${separator}`).map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase())).join(`${separator}<br>`).replaceAll('^=', `${separator}`) //tmpStr.split(';').join(';<br>').replaceAll('^=', ';')
 }
 
 
