@@ -978,6 +978,10 @@ function urlAliasFormatter() {
 -----Nutrition Additives fields, that format content
 -----inside those html blocks------------------- */ 
 
+const compositionSeparator = ';'
+const analyticalSeparator = ';'
+const additivesSeparator = ';'
+
 function addFormatingBtn(iframe, contentTypeStr) {
 	const formatingBtn = document.createElement('a')
 	formatingBtn.className = 'cke_button'
@@ -986,17 +990,17 @@ function addFormatingBtn(iframe, contentTypeStr) {
 		formatingBtn.innerHTML = 'cF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe, ';'))
+		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe, compositionSeparator))
 	} else if(contentTypeStr === "analytical") {
 		formatingBtn.innerHTML = 'aF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => analyticalFormatingBtnHandler(iframe, ';'))
+		formatingBtn.addEventListener('click', () => analyticalFormatingBtnHandler(iframe, analyticalSeparator))
 	} else if(contentTypeStr === "additives") {
 		formatingBtn.innerHTML = 'adF'  
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
-		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler(iframe, ';'))
+		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler(iframe, additivesSeparator))
 	}
 }
 
@@ -1139,3 +1143,6 @@ function hideMessageWindow() {
 // id="edit-field-product-overview-wrapper"
 // id="edit-field-product-nutrition-wrapper"
 // id="edit-field-product-feeding-guide-wrapper"
+
+
+
