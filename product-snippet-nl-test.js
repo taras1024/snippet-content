@@ -1014,7 +1014,10 @@ function compositionFormatingBtnHandler (iframe) {
 		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(';', '^='))    
 	}
 
-	compositionParagraph.innerHTML = tmpStr.split(';').join(';<br>').replaceAll('^=', ';')
+	// tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase()))
+	// p.innerHTML = tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase())).join(';<br>').replaceAll('^=', ';')
+
+	compositionParagraph.innerHTML = tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase())).join(';<br>').replaceAll('^=', ';') //tmpStr.split(';').join(';<br>').replaceAll('^=', ';')
 }
 
 
