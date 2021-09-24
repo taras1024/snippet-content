@@ -1076,7 +1076,7 @@ function createMessageWindow () {
 		max-height: 400px;
 		overflow: auto;
 		position: fixed;
-		top: 10vh;
+		top: 15vh;
 		display: none;
 	`	
 	msgBlockHeaderWrapper = document.createElement('div')
