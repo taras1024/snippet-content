@@ -852,7 +852,7 @@ function ingredientsAndNutritionFormatter() {
 		? copydeckData[56].replace(/["♥]/gi, '')
 		: ''
 	const copydeckNutritionAnalyticalConstituents = copydeckData[58].trim()
-		? copydeckData[58].replace(/["♥]/gi, '').replaceAll('\n', '<br>')
+		? copydeckData[58].replace(/["♥]/gi, '')  //.replaceAll('\n', '<br>')
 		: ''
 	const copydeckIngredientsNutritionalAdditives = copydeckData[60].trim()
 		? copydeckData[60].replace(/["♥]/gi, '')
