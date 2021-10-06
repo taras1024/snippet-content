@@ -39,6 +39,13 @@ const configJSON = `{
 	}
  }`
 
+ const translations = {
+	features: "Caractéristiques",
+	ingredients: "Ingrédients",
+	analyticalConstituents: "Nutrition et constituants analytiques",
+	nutritionalAdditives: "Additifs nutritionnels",
+	feedingGuide: "Guide d'alimentation"
+ }
 /*
  *Snippet GUI start
  */
@@ -743,7 +750,7 @@ function highlightsFormatter() {
  * TODO sorting
  */
 function productSizeFormatter() {
-	const copydeckPackSize = copydeckData[32]
+	const copydeckPackSize = copydeckData[17] //old 32
 	let packSizes = []
 
 	if (copydeckPackSize) {
@@ -832,28 +839,28 @@ function productOverviewFormatter() {
 }
 
 function ingredientsAndNutritionFormatter() {
-	const copydeckIngredients = copydeckData[56].trim()
-		? copydeckData[56].replace(/["♥]/gi, '')
+	const copydeckIngredients = copydeckData[44].trim() //old 56
+		? copydeckData[44].replace(/["♥]/gi, '')
 		: ''
-	const copydeckNutritionAnalyticalConstituents = copydeckData[58].trim()
-		? copydeckData[58].replace(/["♥]/gi, '')
+	const copydeckNutritionAnalyticalConstituents = copydeckData[46].trim()  //old 58
+		? copydeckData[46].replace(/["♥]/gi, '')
 		: ''
-	const copydeckIngredientsNutritionalAdditives = copydeckData[60].trim()
-		? copydeckData[60].replace(/["♥]/gi, '')
+	const copydeckIngredientsNutritionalAdditives = copydeckData[48].trim() //old 60
+		? copydeckData[48].replace(/["♥]/gi, '')
 		: ''
 
 	return [
-		`<p><strong>Samenstelling</strong></p><p>${copydeckIngredients}</p>`,
-		`<p><strong>Analytische bestanddelen</strong></p><p>${copydeckNutritionAnalyticalConstituents}</p>
-		 <p><strong>Nutrionele toevoegingsmiddelen</strong></p><p>${copydeckIngredientsNutritionalAdditives}</p>`,
+		`<p><strong>${translations.features}Samenstelling</strong></p><p>${copydeckIngredients}</p>`,
+		`<p><strong>${translations.analyticalConstituents}</strong></p><p>${copydeckNutritionAnalyticalConstituents}</p>
+		 <p><strong>${translations.nutritionalAdditives}</strong></p><p>${copydeckIngredientsNutritionalAdditives}</p>`,
 	]
 }
 
 function feedingGuideFormatter() {
-	const copydeckIngredients = copydeckData[62]
+	const copydeckIngredients = copydeckData[50] //old 62
 
 	return [
-		`<p><strong>Voedingsadvies</strong></p><p>${copydeckIngredients
+		`<p><strong>${translations.feedingGuide}</strong></p><p>${copydeckIngredients
 			.replace(/["♥]/gi, '')
 			.replace(/<\/?[^>]+(>|$)/g, '')}</p>`,
 	]
@@ -861,32 +868,32 @@ function feedingGuideFormatter() {
 
 /*TAXONOMY FORMATTERS*/
 function petTypeFormatter() {
-	const copydeckPetType = copydeckData[16]
+	const copydeckPetType = copydeckData[15] //old 16
 	return copydeckPetType
 }
 
 function brandFormatter() {
-	const copydeckBrand = copydeckData[14]
+	const copydeckBrand = copydeckData[13] //old 14
 	return [copydeckBrand]
 }
 
 function categoriesFormatter() {
-	const copydeckPetType = copydeckData[16]
-	const copydeckFoodTypeLocal = copydeckData[21]
+	const copydeckPetType = copydeckData[15] //old 16
+	const copydeckFoodTypeLocal = copydeckData[52] //old 21
 
 	return [[copydeckPetType, copydeckFoodTypeLocal]]
 }
 
 function lifestagesFormatter() {
-	const copydeckPetType = copydeckData[16]
-	const copydeckLifestageLocal = copydeckData[24]
+	const copydeckPetType = copydeckData[15] //old 16
+	const copydeckLifestageLocal = copydeckData[58] //old 24
 
 	return [[copydeckLifestageLocal, copydeckPetType]]
 }
 
 function ingredientsFormatter() {
-	const ingredients = copydeckData[26].split(',')
-	const copydeckPetType = copydeckData[16]
+	const ingredients = copydeckData[60].split(',') //old 26
+	const copydeckPetType = copydeckData[15] //old 16
 
 	let data = []
 
@@ -900,8 +907,8 @@ function ingredientsFormatter() {
 }
 
 function conditionsFormatter() {
-	const conditions = copydeckData[28].trim()
-	const copydeckPetType = copydeckData[16]
+	const conditions = copydeckData[62].trim() //old 28
+	const copydeckPetType = copydeckData[15] //old 16
 
 	return conditions.trim().length > 5 && copydeckPetType.trim()
 		? [[conditions, copydeckPetType]]
@@ -909,8 +916,8 @@ function conditionsFormatter() {
 }
 
 function specialNeedsFormatter() {
-	const specialNeeds = copydeckData[30].trim()
-	const copydeckPetType = copydeckData[16]
+	const specialNeeds = copydeckData[62].trim() //old 30
+	const copydeckPetType = copydeckData[15] //old 16
 
 	return specialNeeds.trim().length > 5 && copydeckPetType.trim()
 		? [[specialNeeds, copydeckPetType]]
@@ -918,8 +925,8 @@ function specialNeedsFormatter() {
 }
 
 function rangesFormatter() {
-	const copydeckRange = copydeckData[20].trim()
-	const copydeckBrand = copydeckData[14]
+	const copydeckRange = copydeckData[54].trim() //old 20
+	const copydeckBrand = copydeckData[13] //old 14
 
 	return copydeckRange.trim() && copydeckBrand.trim()
 		? [[copydeckRange, copydeckBrand]]
@@ -929,19 +936,19 @@ function rangesFormatter() {
 /*SEO FORMATTERS */
 
 function pageTitleFormatter() {
-	const seoTitle = copydeckData[66]
+	const seoTitle = copydeckData[57] //old 66
 	return seoTitle ? seoTitle : ''
 }
 function pageDescriptionFormatter() {
-	const seoDescription = copydeckData[68]
+	const seoDescription = copydeckData[59] //old 68
 	return seoDescription ? seoDescription : ''
 }
 function openGraphTitleFormatter() {
-	const seoOGTitle = copydeckData[70]
+	const seoOGTitle = copydeckData[61] //old 70
 	return seoOGTitle ? seoOGTitle : ''
 }
 function openGraphDescriptionFormatter() {
-	const seoOGDescription = copydeckData[72]
+	const seoOGDescription = copydeckData[63] //old 72
 	return seoOGDescription ? seoOGDescription : ''
 }
 function urlAliasFormatter() {
