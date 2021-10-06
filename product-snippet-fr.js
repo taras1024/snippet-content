@@ -850,7 +850,7 @@ function ingredientsAndNutritionFormatter() {
 		: ''
 
 	return [
-		`<p><strong>${translations.features}Samenstelling</strong></p><p>${copydeckIngredients}</p>`,
+		`<p><strong>${translations.features}</strong></p><p>${copydeckIngredients}</p>`,
 		`<p><strong>${translations.analyticalConstituents}</strong></p><p>${copydeckNutritionAnalyticalConstituents}</p>
 		 <p><strong>${translations.nutritionalAdditives}</strong></p><p>${copydeckIngredientsNutritionalAdditives}</p>`,
 	]
