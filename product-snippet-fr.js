@@ -718,7 +718,7 @@ function newsletterFormatter() {
 }
 
 function headLineFormatter() {
-	const prodCategoryLocal = copydeckData[52] //old 22
+	const prodCategoryLocal = copydeckData[19] //old 22
 
 	return prodCategoryLocal ? prodCategoryLocal : ''
 }
@@ -803,7 +803,7 @@ function productOverviewFormatter() {
 			: ''
 	}
 
-	let firstBlock = `<p><strong>Kenmerken</strong></p> <ul><li>${features[0]
+	let firstBlock = `<p><strong>${translations.features}</strong></p> <ul><li>${features[0]
 		.map((e) => {
 			let element = e.trim()
 			let lastSymbol = element.split('')[element.length - 1]
@@ -936,19 +936,19 @@ function rangesFormatter() {
 /*SEO FORMATTERS */
 
 function pageTitleFormatter() {
-	const seoTitle = copydeckData[57] //old 66
+	const seoTitle = copydeckData[68] //old 66
 	return seoTitle ? seoTitle : ''
 }
 function pageDescriptionFormatter() {
-	const seoDescription = copydeckData[59] //old 68
+	const seoDescription = copydeckData[70] //old 68
 	return seoDescription ? seoDescription : ''
 }
 function openGraphTitleFormatter() {
-	const seoOGTitle = copydeckData[61] //old 70
+	const seoOGTitle = copydeckData[72] //old 70
 	return seoOGTitle ? seoOGTitle : ''
 }
 function openGraphDescriptionFormatter() {
-	const seoOGDescription = copydeckData[63] //old 72
+	const seoOGDescription = copydeckData[74] //old 72
 	return seoOGDescription ? seoOGDescription : ''
 }
 function urlAliasFormatter() {
