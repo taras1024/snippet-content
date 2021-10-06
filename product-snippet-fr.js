@@ -30,11 +30,11 @@ const configJSON = `{
 	],
 	"copydeck":{
 	  "translations":{
-		  "features":{"fr":"Caractéristiques", "nl":"Samenstelling"},
-		  "ingredients":{"fr":"Ingrédients", "nl":"Ingrediënten"},
-		  "analyticalConstituents":{"fr":"Nutrition et constituants analytiques", "nl":"Voeding en analytische stoffen"},
-		  "nutritionalAdditives":{"fr":"Additifs nutritionnels", "nl":"Voedingsadditieven"},
-		  "feedingGuide":{"fr":"Guide d'alimentation", "nl":"Voedingsadvies"}
+		  "features":"Caractéristiques",
+		  "ingredients":"Ingrédients",
+		  "analyticalConstituents":"Nutrition et constituants analytiques",
+		  "nutritionalAdditives":"Additifs nutritionnels",
+		  "feedingGuide":"Guide d'alimentation"
 		}
 	}
  }`
@@ -702,7 +702,7 @@ function buyNowFusepumpFormatter() {
 }
 
 function newsletterFormatter() {
-	const copydecPetType = copydeckData[16]
+	const copydecPetType = copydeckData[15] //old 16
 	const copydecNewsletter = copydeckData[75]
 
 	return copydecPetType && copydecNewsletter
@@ -711,14 +711,14 @@ function newsletterFormatter() {
 }
 
 function headLineFormatter() {
-	const prodCategoryLocal = copydeckData[22]
+	const prodCategoryLocal = copydeckData[52] //old 22
 
 	return prodCategoryLocal ? prodCategoryLocal : ''
 }
 
 function highlightsFormatter() {
-	const firstHighlightIndex = 36
-	const lastHighlightIndex = 54
+	const firstHighlightIndex = 24 // old 36
+	const lastHighlightIndex = 42 // old 54
 
 	let highlights = []
 
