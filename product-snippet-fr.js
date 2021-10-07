@@ -777,8 +777,8 @@ function productSizeFormatter() {
 function productOverviewFormatter() {
 	const copydeckProdDesc1 = copydeckData[23].trim() //old 34
 
-	const firstHighlightIndex = 24 //old 36
-	const lastHighlightIndex = 42 //old 54
+	const firstHighlightIndex = 25 //old 36
+	const lastHighlightIndex = 43 //old 54
 
 	let features = [[], []]
 	let descriptions = [[], []]
