@@ -702,15 +702,15 @@ function GTINFormatter() {
 }
 
 function buyNowFusepumpFormatter() {
-	const copydeckBuyNowFusepump = copydeckData[11].trim() //.replace(/[^0-9]/gm, '').trim()
+	const copydeckBuyNowFusepump = copydeckData[12].trim() //.replace(/[^0-9]/gm, '').trim()
 	return copydeckBuyNowFusepump.length > 0 && copydeckBuyNowFusepump !== '0'
 		? copydeckBuyNowFusepump
 		: ''
 }
 
 function newsletterFormatter() {
-	const copydecPetType = copydeckData[16] //old 16
-	const copydecNewsletter = copydeckData[76]
+	const copydecPetType = copydeckData[17] //old 16
+	const copydecNewsletter = copydeckData[77]
 
 	return copydecPetType && copydecNewsletter
 		? [copydecPetType, copydecNewsletter]
