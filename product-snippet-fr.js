@@ -937,19 +937,19 @@ function rangesFormatter() {
 /*SEO FORMATTERS */
 
 function pageTitleFormatter() {
-	const seoTitle = copydeckData[77] //old 66
+	const seoTitle = copydeckData[68] //old 66
 	return seoTitle ? seoTitle : ''
 }
 function pageDescriptionFormatter() {
-	const seoDescription = copydeckData[79] //old 68
+	const seoDescription = copydeckData[70] //old 68
 	return seoDescription ? seoDescription : ''
 }
 function openGraphTitleFormatter() {
-	const seoOGTitle = copydeckData[81] //old 70
+	const seoOGTitle = copydeckData[72] //old 70
 	return seoOGTitle ? seoOGTitle : ''
 }
 function openGraphDescriptionFormatter() {
-	const seoOGDescription = copydeckData[83] //old 72
+	const seoOGDescription = copydeckData[74] //old 72
 	return seoOGDescription ? seoOGDescription : ''
 }
 function urlAliasFormatter() {
