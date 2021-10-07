@@ -682,19 +682,19 @@ function internalTitleFormatter() {
 }
 
 function externalTitleFormatter() {
-	const copydeckTitle = copydeckData[5].trim()
-	const copydeckBrand = copydeckData[14].trim()
+	const copydeckTitle = copydeckData[6].trim()
+	const copydeckBrand = copydeckData[15].trim()
 
 	return copydeckTitle ? copydeckTitle : ''
 }
 
 function bazaavoiceProductIDFormatter() {
-	const copydeckId = copydeckData[10].replace(/[^0-9]/gm, '').trim()
+	const copydeckId = copydeckData[11].replace(/[^0-9]/gm, '').trim()
 	return copydeckId.length > 0 && copydeckId !== '0' ? copydeckId : ''
 }
 
 function GTINFormatter() {
-	const copydeckGTIN = copydeckData[9]
+	const copydeckGTIN = copydeckData[10]
 		.split(' ')[0]
 		.replace(/[^0-9]/gm, '')
 		.trim()
@@ -709,8 +709,8 @@ function buyNowFusepumpFormatter() {
 }
 
 function newsletterFormatter() {
-	const copydecPetType = copydeckData[15] //old 16
-	const copydecNewsletter = copydeckData[75]
+	const copydecPetType = copydeckData[16] //old 16
+	const copydecNewsletter = copydeckData[76]
 
 	return copydecPetType && copydecNewsletter
 		? [copydecPetType, copydecNewsletter]
@@ -718,14 +718,14 @@ function newsletterFormatter() {
 }
 
 function headLineFormatter() {
-	const prodCategoryLocal = copydeckData[19] //old 22
+	const prodCategoryLocal = copydeckData[20] //old 22
 
 	return prodCategoryLocal ? prodCategoryLocal : ''
 }
 
 function highlightsFormatter() {
-	const firstHighlightIndex = 24 // old 36
-	const lastHighlightIndex = 42 // old 54
+	const firstHighlightIndex = 25 // old 36
+	const lastHighlightIndex = 43 // old 54
 
 	let highlights = []
 
@@ -750,7 +750,7 @@ function highlightsFormatter() {
  * TODO sorting
  */
 function productSizeFormatter() {
-	const copydeckPackSize = copydeckData[17] //old 32
+	const copydeckPackSize = copydeckData[18] //old 32
 	let packSizes = []
 
 	if (copydeckPackSize) {
@@ -775,7 +775,7 @@ function productSizeFormatter() {
 }
 
 function productOverviewFormatter() {
-	const copydeckProdDesc1 = copydeckData[22].trim() //old 34
+	const copydeckProdDesc1 = copydeckData[23].trim() //old 34
 
 	const firstHighlightIndex = 24 //old 36
 	const lastHighlightIndex = 42 //old 54
@@ -839,14 +839,14 @@ function productOverviewFormatter() {
 }
 
 function ingredientsAndNutritionFormatter() {
-	const copydeckIngredients = copydeckData[44].trim() //old 56
-		? copydeckData[44].replace(/["♥]/gi, '')
+	const copydeckIngredients = copydeckData[45].trim() //old 56
+		? copydeckData[45].replace(/["♥]/gi, '')
 		: ''
-	const copydeckNutritionAnalyticalConstituents = copydeckData[46].trim()  //old 58
-		? copydeckData[46].replace(/["♥]/gi, '')
+	const copydeckNutritionAnalyticalConstituents = copydeckData[47].trim()  //old 58
+		? copydeckData[47].replace(/["♥]/gi, '')
 		: ''
-	const copydeckIngredientsNutritionalAdditives = copydeckData[48].trim() //old 60
-		? copydeckData[48].replace(/["♥]/gi, '')
+	const copydeckIngredientsNutritionalAdditives = copydeckData[49].trim() //old 60
+		? copydeckData[49].replace(/["♥]/gi, '')
 		: ''
 
 	return [
@@ -857,7 +857,7 @@ function ingredientsAndNutritionFormatter() {
 }
 
 function feedingGuideFormatter() {
-	const copydeckIngredients = copydeckData[50] //old 62
+	const copydeckIngredients = copydeckData[51] //old 62
 
 	return [
 		`<p><strong>${translations.feedingGuide}</strong></p><p>${copydeckIngredients
@@ -868,32 +868,32 @@ function feedingGuideFormatter() {
 
 /*TAXONOMY FORMATTERS*/
 function petTypeFormatter() {
-	const copydeckPetType = copydeckData[15] //old 16
+	const copydeckPetType = copydeckData[16] //old 16
 	return copydeckPetType
 }
 
 function brandFormatter() {
-	const copydeckBrand = copydeckData[13] //old 14
+	const copydeckBrand = copydeckData[14] //old 14
 	return [copydeckBrand]
 }
 
 function categoriesFormatter() {
-	const copydeckPetType = copydeckData[15] //old 16
-	const copydeckFoodTypeLocal = copydeckData[52] //old 21
+	const copydeckPetType = copydeckData[16] //old 16
+	const copydeckFoodTypeLocal = copydeckData[53] //old 21
 
 	return [[copydeckPetType, copydeckFoodTypeLocal]]
 }
 
 function lifestagesFormatter() {
-	const copydeckPetType = copydeckData[15] //old 16
-	const copydeckLifestageLocal = copydeckData[58] //old 24
+	const copydeckPetType = copydeckData[16] //old 16
+	const copydeckLifestageLocal = copydeckData[59] //old 24
 
 	return [[copydeckLifestageLocal, copydeckPetType]]
 }
 
 function ingredientsFormatter() {
-	const ingredients = copydeckData[60].split(',') //old 26
-	const copydeckPetType = copydeckData[15] //old 16
+	const ingredients = copydeckData[61].split(',') //old 26
+	const copydeckPetType = copydeckData[16] //old 16
 
 	let data = []
 
@@ -907,8 +907,8 @@ function ingredientsFormatter() {
 }
 
 function conditionsFormatter() {
-	const conditions = copydeckData[62].trim() //old 28
-	const copydeckPetType = copydeckData[15] //old 16
+	const conditions = copydeckData[63].trim() //old 28
+	const copydeckPetType = copydeckData[16] //old 16
 
 	return conditions.trim().length > 5 && copydeckPetType.trim()
 		? [[conditions, copydeckPetType]]
@@ -916,8 +916,8 @@ function conditionsFormatter() {
 }
 
 function specialNeedsFormatter() {
-	const specialNeeds = copydeckData[62].trim() //old 30
-	const copydeckPetType = copydeckData[15] //old 16
+	const specialNeeds = copydeckData[63].trim() //old 30
+	const copydeckPetType = copydeckData[16] //old 16
 
 	return specialNeeds.trim().length > 5 && copydeckPetType.trim()
 		? [[specialNeeds, copydeckPetType]]
@@ -925,8 +925,8 @@ function specialNeedsFormatter() {
 }
 
 function rangesFormatter() {
-	const copydeckRange = copydeckData[54].trim() //old 20
-	const copydeckBrand = copydeckData[13] //old 14
+	const copydeckRange = copydeckData[55].trim() //old 20
+	const copydeckBrand = copydeckData[14] //old 14
 
 	return copydeckRange.trim() && copydeckBrand.trim()
 		? [[copydeckRange, copydeckBrand]]
@@ -936,23 +936,23 @@ function rangesFormatter() {
 /*SEO FORMATTERS */
 
 function pageTitleFormatter() {
-	const seoTitle = copydeckData[67] //old 66
+	const seoTitle = copydeckData[68] //old 66
 	return seoTitle ? seoTitle : ''
 }
 function pageDescriptionFormatter() {
-	const seoDescription = copydeckData[69] //old 68
+	const seoDescription = copydeckData[70] //old 68
 	return seoDescription ? seoDescription : ''
 }
 function openGraphTitleFormatter() {
-	const seoOGTitle = copydeckData[71] //old 70
+	const seoOGTitle = copydeckData[72] //old 70
 	return seoOGTitle ? seoOGTitle : ''
 }
 function openGraphDescriptionFormatter() {
-	const seoOGDescription = copydeckData[73] //old 72
+	const seoOGDescription = copydeckData[74] //old 72
 	return seoOGDescription ? seoOGDescription : ''
 }
 function urlAliasFormatter() {
-	const urlAlias = copydeckData[7]
+	const urlAlias = copydeckData[8]
 	return urlAlias ? urlAlias : ''
 }
 
