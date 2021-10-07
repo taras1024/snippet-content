@@ -760,7 +760,8 @@ function productSizeFormatter() {
 			.map((val) => {
 				if (val.includes('x')) {
 					return `${val.replace(/[^x0-9\s]/gi, '')}g`
-				} else if (val.includes('kg')) {
+				// } else if (val.includes('kg')) {
+				} else if (/kg/i.test(val)) {
 					let parsedVal = val.replace(/[^0-9\,]/gi, '')
 					return `${parsedVal}kg`
 				} else {
