@@ -769,7 +769,8 @@ function productSizeFormatter() {
 					return parsedVal > 1000 ? `${parsedVal / 1000}kg` : `${parsedVal}g`
 				}
 			})
-			.sort((first, second) => first.length - second.length)
+			//be in copydeck order
+			//.sort((first, second) => first.length - second.length)
 	}
 
 	return packSizes
