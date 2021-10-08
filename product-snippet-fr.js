@@ -755,7 +755,7 @@ function productSizeFormatter() {
 
 	if (copydeckPackSize) {
 		packSizes = copydeckPackSize
-			.split(', ')
+			.split(' ')
 			.filter((val) => /\d/.test(val))
 			.map((val) => {
 				if (val.includes('x')) {
