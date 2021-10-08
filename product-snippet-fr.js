@@ -661,7 +661,12 @@ function showNotFoundedValue(node, values) {
 	const notFoundValueNode = document.createElement('div')
 	notFoundValueNode.style.cssText = `background: ${notAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
 	notFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
-	node.parentElement.parentElement.prepend(notFoundValueNode)
+
+	if(node.id === "edit-field-product-range-wrapper" || node.id === "edit-field-product-newsletter-wrapper") {
+		node.prepend(notFoundValueNode)
+	} else {
+		node.parentElement.parentElement.prepend(notFoundValueNode)
+	}
 }
 
 /*
