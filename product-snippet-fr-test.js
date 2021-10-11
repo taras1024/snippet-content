@@ -942,9 +942,9 @@ function feedingGuideFormatter() {
 	return [
 		`<p><strong>${translations.feedingGuide}</strong></p><p>${copydeckIngredients
 			.replace(/["♥]/gi, '')
-			.replace('<br>', '\n')
+			.replace(/<br>/g, '\n')
 			.replace(/<\/?[^>]+(>|$)/g, '')
-			.replace('\n', '<br>')}</p>`,
+			.replace(/\n/g, '<br>')}</p>`,
 	]
 }
 
