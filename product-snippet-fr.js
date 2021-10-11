@@ -493,9 +493,9 @@ async function editSelect(node, values) {
 	}
 
 	if (!matchFound) {
-		showNotFoundedValue(node, values, notAddedColor)
+		showFoundedOrNotFoundedValue(node, values, notAddedColor)
 	} else {
-		showNotFoundedValue(node, values, addedColor)
+		showFoundedOrNotFoundedValue(node, values, addedColor)
 	}
 }
 
@@ -516,9 +516,9 @@ async function editRadioBtn(node, value) {
 	}
 
 	if (!matchFound) {
-		showNotFoundedValue(node, [value], notAddedColor)
+		showFoundedOrNotFoundedValue(node, [value], notAddedColor)
 	} else {
-		showNotFoundedValue(node, [value], addedColor)
+		showFoundedOrNotFoundedValue(node, [value], addedColor)
 
 	}
 }
@@ -597,9 +597,9 @@ async function editCheckbox(node, values, numberOfFields = values.length) {
 	}
 
 	if (!matchFound) {
-		showNotFoundedValue(node, values, notAddedColor)
+		showFoundedOrNotFoundedValue(node, values, notAddedColor)
 	} else {
-		showNotFoundedValue(node, values, addedColor)
+		showFoundedOrNotFoundedValue(node, values, addedColor)
 
 	}
 }
@@ -665,18 +665,18 @@ function clickElement(node) {
  *Function shows not founded value
  **/
 
-function showNotFoundedValue(node, values, addedOrNotAddedColor) {
-	const notFoundValueNode = document.createElement('div')
-	notFoundValueNode.style.cssText = `background: ${addedOrNotAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
-	notFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
+function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
+	const foundedOrnotFoundValueNode = document.createElement('div')
+	foundedOrnotFoundValueNode.style.cssText = `background: ${addedOrNotAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
+	foundedOrnotFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
 
 	if(node.id === "edit-field-product-range-wrapper" 
 		|| node.id === "edit-field-product-newsletter-wrapper"
 		|| node.id === "edit-field-product-brand-wrapper"
 		|| node.id === "edit-field-product-pet-type-wrapper") {
-		node.prepend(notFoundValueNode)
+		node.prepend(foundedOrnotFoundValueNode)
 	} else {
-		node.parentElement.parentElement.prepend(notFoundValueNode)
+		node.parentElement.parentElement.prepend(foundedOrnotFoundValueNode)
 	}
 }
 
