@@ -288,6 +288,7 @@ snippetAddCustomBtn.addEventListener('click', async function () {
 	setAuthor()
 	snippetLoaderContainer.style.display = 'none'
 	initCustomFieldsFlag = true
+	createMessageWindow()
 })
 
 snippetAddSeoBtn.addEventListener('click', async function () {
@@ -311,6 +312,7 @@ snippetAddAllBtn.addEventListener('click', async function () {
 	snippetLoaderContainer.style.display = 'none'
 	initCustomFieldsFlag = true
 	initSeoFieldsFlag = true
+	createMessageWindow()
 })
 
 let copydeckAllData = []
@@ -1043,3 +1045,176 @@ function urlAliasFormatter() {
 /*
  *Snippet Prepare Data end
  */
+
+
+
+ /*------------Aditional functionality------------
+-----Buttons for Composition, Analytical Constituents,
+-----Nutrition Additives fields, that format content
+-----inside those html blocks------------------- */ 
+
+const compositionSeparator = ';'
+const analyticalSeparator = ';'
+const additivesSeparator = ';'
+
+function addFormatingBtn(iframe, contentTypeStr) {
+	const formatingBtn = document.createElement('a')
+	formatingBtn.className = 'cke_button'
+
+	if(contentTypeStr === "composition") {
+		formatingBtn.innerHTML = 'cF'  
+		const prevIframeElement = iframe.previousElementSibling
+		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
+		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe, compositionSeparator))
+	} else if(contentTypeStr === "analytical") {
+		formatingBtn.innerHTML = 'aF'  
+		const prevIframeElement = iframe.previousElementSibling
+		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
+		formatingBtn.addEventListener('click', () => analyticalFormatingBtnHandler(iframe, analyticalSeparator))
+	} else if(contentTypeStr === "additives") {
+		formatingBtn.innerHTML = 'adF'  
+		const prevIframeElement = iframe.previousElementSibling
+		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
+		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler(iframe, additivesSeparator))
+	}
+}
+
+function compositionFormatingBtnHandler (iframe, separator) {
+	event.preventDefault()
+	let compositionParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)')
+	let compositionHTML = compositionParagraph.innerHTML
+
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	if(!msgBlock) {
+		alert('Check window does not exist!!!')
+	} else {
+		setMessageWindowHTML('Composition Content', compositionHTML)
+	}
+
+	//solution for case when separator present in brackets content
+	let matchesArr = [...compositionHTML.matchAll(/\([^)]*\)/g)]
+	let tmpStr = compositionHTML
+
+	for(let m of matchesArr) {
+		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(`${separator}`, '^='))    
+	}
+	//-----------------------------------------------------------
+
+	// tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase()))
+	// p.innerHTML = tmpStr.split(';').map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase())).join(';<br>').replaceAll('^=', ';')
+
+	compositionParagraph.innerHTML = tmpStr.split(`${separator}`).map(el => el.trim()).map(el => el.replace(el[0], el[0].toUpperCase())).join(`${separator}<br>`).replaceAll('^=', `${separator}`) //tmpStr.split(';').join(';<br>').replaceAll('^=', ';')
+}
+
+
+function analyticalFormatingBtnHandler (iframe, separator) {
+	event.preventDefault()
+	let analyticalParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)')
+	let analyticalHTML = analyticalParagraph.innerHTML
+
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	if(!msgBlock) {
+		alert('Check window does not exist!!!')
+	} else {
+		setMessageWindowHTML('Analytical constituents Content', analyticalHTML)
+	}
+
+	analyticalParagraph.innerHTML = analyticalHTML.split(separator).join(`${separator}<br>`)
+}
+
+
+function additivesFormatingBtnHandler (iframe, separator) {
+	event.preventDefault()
+	let additivesParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(4)')
+	let additivesHTML = additivesParagraph.innerHTML
+
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	if(!msgBlock) {
+		alert('Check window does not exist!!!')
+	} else {
+		setMessageWindowHTML('Nutritional additives Content', additivesHTML)
+	}
+
+	additivesParagraph.innerHTML = additivesHTML.replace('IU/kg:', 'IU/kg:<br>').replace('mg/kg:', '<br>mg/kg: <br>').split(`${separator}`).join(`${separator}<br>`)
+}
+
+
+function createMessageWindow () {
+	msgBlock = document.createElement('div')
+	msgBlock.id = 'msgBlock'
+	msgBlock.style.cssText = `
+		border: 1px solid black; 
+		padding 0.25em 1.25em; 
+		background-color: #eaec42; 
+		width: 33.2%;
+		min-height: 200px;
+		max-height: 400px;
+		overflow: auto;
+		position: fixed;
+		top: 15vh;
+		display: none;
+	`	
+	msgBlockHeaderWrapper = document.createElement('div')
+	msgBlockHeaderWrapper.style.cssText = `
+		background-color: #FF0000; 
+		color: #FFFFFF; 
+		padding: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	`
+	msgBlockHeader = document.createElement('h3')
+	msgBlockHeader.style.cssText = `
+		margin: 0;
+		letter-spacing: 2px;
+	`
+	msgBlockHeader.innerHTML = 'Check content window!!!'
+	msgBlockClose = document.createElement('span')
+	msgBlockClose.innerHTML = '✕'
+	msgBlockClose.style.cursor = 'pointer'
+	msgBlockHeaderWrapper.appendChild(msgBlockHeader)
+	msgBlockHeaderWrapper.appendChild(msgBlockClose)
+
+	msgBlockClose.addEventListener('click', () => hideMessageWindow())
+
+	msgBlockContentTitle = document.createElement('h4')
+	msgBlockContentTitle.innerHTML = 'Content Title'
+	msgBlockContentTitle.style.cssText = `
+		background-color: #69AA00; 
+		color: #FFFFFF; 
+		margin: 0;
+		padding: 10px;
+		letter-spacing: 2px;
+	`
+
+	msgBlockParagraph = document.createElement('p')
+	msgBlockParagraph.style.cssText = `
+		padding: 10px;
+		font-size: 14px;
+	`
+
+	msgBlock.appendChild(msgBlockHeaderWrapper)
+	msgBlock.appendChild(msgBlockContentTitle)
+	msgBlock.appendChild(msgBlockParagraph)
+
+	document.querySelector('iframe#snippetIframe').contentWindow.document
+	.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
+}
+
+
+function setMessageWindowHTML(messageContentTitle, messageHTML) {
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	msgBlock.style.display = 'block'
+
+	msgBlock.querySelector('h4').innerHTML = messageContentTitle
+	msgBlock.querySelector('p').innerHTML = messageHTML
+}
+
+function hideMessageWindow() {
+	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
+	msgBlock.style.display = 'none'
+}
+
+// id="edit-field-product-overview-wrapper"
+// id="edit-field-product-nutrition-wrapper"
+// id="edit-field-product-feeding-guide-wrapper"
