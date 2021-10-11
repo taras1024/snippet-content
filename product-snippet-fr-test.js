@@ -319,7 +319,8 @@ let copydeckData = []
 async function parseDataToArray() {
 	copydeckAllData = []
 	for await (const column of snippetInput.value.split('\t\n')) {
-		copydeckAllData.push(column.replaceAll('\n', '<br>').split('\t')) //change \n to html format
+		copydeckAllData.push(column.split('\t')) //change \n to html format
+		// copydeckAllData.push(column.replaceAll('\n', '<br>').split('\t')) //change \n to html format
 	}
 	copydeckData = copydeckAllData[0]
 	console.log(copydeckData)
@@ -930,9 +931,9 @@ function ingredientsAndNutritionFormatter() {
 		: ''
 
 	return [
-		`<p><strong>${translations.ingredients}</strong></p><p>${copydeckIngredients}</p>`,
-		`<p><strong>${translations.analyticalConstituents}</strong></p><p>${copydeckNutritionAnalyticalConstituents}</p>
-		 <p><strong>${translations.nutritionalAdditives}</strong></p><p>${copydeckIngredientsNutritionalAdditives}</p>`,
+		`<p><strong>${translations.ingredients}</strong></p><p>${copydeckIngredients.replace(/\n/g, '<br>')}</p>`,
+		`<p><strong>${translations.analyticalConstituents}</strong></p><p>${copydeckNutritionAnalyticalConstituents.replace(/\n/g, '<br>')}</p>
+		 <p><strong>${translations.nutritionalAdditives}</strong></p><p>${copydeckIngredientsNutritionalAdditives.replace(/\n/g, '<br>')}</p>`,
 	]
 }
 
@@ -942,7 +943,7 @@ function feedingGuideFormatter() {
 	return [
 		`<p><strong>${translations.feedingGuide}</strong></p><p>${copydeckIngredients
 			.replace(/["♥]/gi, '')
-			.replace(/<br>/g, '\n')
+			//.replace(/<br>/g, '\n')
 			.replace(/<\/?[^>]+(>|$)/g, '')
 			.replace(/\n/g, '<br>')}</p>`,
 	]
