@@ -670,7 +670,10 @@ function showNotFoundedValue(node, values, addedOrNotAddedColor) {
 	notFoundValueNode.style.cssText = `background: ${addedOrNotAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
 	notFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
 
-	if(node.id === "edit-field-product-range-wrapper" || node.id === "edit-field-product-newsletter-wrapper") {
+	if(node.id === "edit-field-product-range-wrapper" 
+		|| node.id === "edit-field-product-newsletter-wrapper"
+		|| node.id === "edit-field-product-brand-wrapper"
+		|| node.id === "edit-field-product-pet-type-wrapper") {
 		node.prepend(notFoundValueNode)
 	} else {
 		node.parentElement.parentElement.prepend(notFoundValueNode)
