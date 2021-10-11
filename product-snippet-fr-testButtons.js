@@ -1129,7 +1129,9 @@ function analyticalFormatingBtnHandler (iframe, separator) {
 		setMessageWindowHTML('Analytical constituents Content', analyticalHTML)
 	}
 
-	analyticalParagraph.innerHTML = analyticalHTML.split(separator).join(`${separator}<br>`)
+	// analyticalParagraph.innerHTML = analyticalHTML.split(separator).join(`${separator}<br>`)
+	//add split by %separator
+	analyticalParagraph.innerHTML = analyticalHTML.split(`%${separator}`).join(`%${separator}<br>`)
 }
 
 
