@@ -416,6 +416,16 @@ async function editEditorsGroup(node, values, numberOfFields = values.length) {
 		iframe.addEventListener('load', function () {
 			let value = values[index] && index < numberOfFields ? values[index] : ''
 			iframe.contentWindow.document.querySelector('body').innerHTML = value
+
+			//adding formating buttons
+			if(node.id === "edit-field-product-nutrition-wrapper") {
+				if(index === 0) {
+					addFormatingBtn(iframe, 'composition')
+				} else if(index === 1) {
+					addFormatingBtn(iframe, 'analytical')
+					addFormatingBtn(iframe, 'additives')
+				}
+			}
 		})
 	}
 
