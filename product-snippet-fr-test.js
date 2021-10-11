@@ -938,12 +938,11 @@ function ingredientsAndNutritionFormatter() {
 }
 
 function feedingGuideFormatter() {
-	const copydeckIngredients = copydeckData[51] //old 62
+	const copydeckFeedingGuide = copydeckData[51] //old 62
 
 	return [
-		`<p><strong>${translations.feedingGuide}</strong></p><p>${copydeckIngredients
+		`<p><strong>${translations.feedingGuide}</strong></p><p>${copydeckFeedingGuide
 			.replace(/["♥]/gi, '')
-			//.replace(/<br>/g, '\n')
 			.replace(/<\/?[^>]+(>|$)/g, '')
 			.replace(/\n/g, '<br>')}</p>`,
 	]
