@@ -493,7 +493,9 @@ async function editSelect(node, values) {
 	}
 
 	if (!matchFound) {
-		showNotFoundedValue(node, values)
+		showNotFoundedValue(node, values, notAddedColor)
+	} else {
+		showNotFoundedValue(node, values, addedColor)
 	}
 }
 
@@ -657,9 +659,9 @@ function clickElement(node) {
  *Function shows not founded value
  **/
 
-function showNotFoundedValue(node, values) {
+function showNotFoundedValue(node, values, addedOrNotAddedColor) {
 	const notFoundValueNode = document.createElement('div')
-	notFoundValueNode.style.cssText = `background: ${notAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
+	notFoundValueNode.style.cssText = `background: ${addedOrNotAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
 	notFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
 
 	if(node.id === "edit-field-product-range-wrapper" || node.id === "edit-field-product-newsletter-wrapper") {
