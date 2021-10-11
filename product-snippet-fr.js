@@ -516,7 +516,10 @@ async function editRadioBtn(node, value) {
 	}
 
 	if (!matchFound) {
-		showNotFoundedValue(node, [value])
+		showNotFoundedValue(node, [value], notAddedColor)
+	} else {
+		showNotFoundedValue(node, [value], addedColor)
+
 	}
 }
 
@@ -594,7 +597,10 @@ async function editCheckbox(node, values, numberOfFields = values.length) {
 	}
 
 	if (!matchFound) {
-		showNotFoundedValue(node, values)
+		showNotFoundedValue(node, values, notAddedColor)
+	} else {
+		showNotFoundedValue(node, values, addedColor)
+
 	}
 }
 
