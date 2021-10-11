@@ -319,7 +319,7 @@ let copydeckData = []
 async function parseDataToArray() {
 	copydeckAllData = []
 	for await (const column of snippetInput.value.split('\t\n')) {
-		copydeckAllData.push(column.split('\t'))
+		copydeckAllData.push(column.replaceAll('\n', '<br>').split('\t')) //change \n to html format
 	}
 	copydeckData = copydeckAllData[0]
 	console.log(copydeckData)
