@@ -1053,8 +1053,8 @@ function urlAliasFormatter() {
 -----Nutrition Additives fields, that format content
 -----inside those html blocks------------------- */ 
 
-const compositionSeparator = ';'
-const analyticalSeparator = ';'
+const compositionSeparator = ','
+const analyticalSeparator = ','
 const additivesSeparator = ';'
 
 function addFormatingBtn(iframe, contentTypeStr) {
