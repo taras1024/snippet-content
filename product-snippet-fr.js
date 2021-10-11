@@ -726,7 +726,10 @@ function showConsoleCopydeckBasicData () {
 		"Related 4 Prods Local": copydeckData[80],
 	}
 
-	console.log(copydeckBasicData)
+	console.log(JSON.stringify(copydeckBasicData, null, 4))
+
+	// var str = Object.keys(copydeckBasicData).map(key => `${key}: ${copydeckBasicData[key]}`)
+	// console.log(str)
 }
 
 /*
