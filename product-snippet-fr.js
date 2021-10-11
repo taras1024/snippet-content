@@ -322,6 +322,9 @@ async function parseDataToArray() {
 	}
 	copydeckData = copydeckAllData[0]
 	console.log(copydeckData)
+
+	//show only copydeck data than need to be inputed
+	showConsoleCopydeckBasicData()
 }
 
 async function initFields(fields, flag) {
@@ -662,7 +665,7 @@ function clickElement(node) {
 }
 
 /**
- *Function shows not founded value
+ *Function shows founded or not founded value
  **/
 
 function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
@@ -678,6 +681,52 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 	} else {
 		node.parentElement.parentElement.prepend(foundedOrnotFoundValueNode)
 	}
+}
+
+function showConsoleCopydeckBasicData () {
+	copydeckBasicData = {
+		"Product Title Local": copydeckData[6],
+		"TTT URL Match": copydeckData[8],
+		"GTIN Local": copydeckData[10],
+		"bvID Local": copydeckData[11],
+		"fpID Local": copydeckData[12],
+		"Brand Local": copydeckData[14],
+		"Pet Type Local": copydeckData[16],
+		"Pack Sizes Local": copydeckData[18],
+		"Headline Local": copydeckData[20],
+		"Description Final Local": copydeckData[23],
+		"Feature 1 Local": copydeckData[25],
+		"Feature 2 Local": copydeckData[27],
+		"Feature 3 Local": copydeckData[29],
+		"Feature 4 Local": copydeckData[31],
+		"Feature 5 Local": copydeckData[33],
+		"Feature 6 Local": copydeckData[35],
+		"Feature 7 Local": copydeckData[37],
+		"Feature 8 Local": copydeckData[39],
+		"Feature 9 Local": copydeckData[41],
+		"Feature 10 Local": copydeckData[43],
+		"Composition Local": copydeckData[45],
+		"Analytical Constituents Local": copydeckData[47],
+		"Nutritional Additives Local": copydeckData[49],
+		"Feeding Guidelines Local": copydeckData[51],
+		"Food Type Local": copydeckData[53],
+		"Range Local": copydeckData[55],
+		"Category Local": copydeckData[57],
+		"Lifestage Local": copydeckData[59],
+		"Ingredients Local": copydeckData[61],
+		"Conditions Local (PPVD only)": copydeckData[63],
+		"Special Needs  Local": copydeckData[65],
+		"TTT URL Local": copydeckData[66],
+		"SEO Title Local": copydeckData[68],
+		"SEO Description Local": copydeckData[70],
+		"OG Title Local": copydeckData[72],
+		"OG Description Local": copydeckData[74],
+		"Footer Newsletter Local": copydeckData[76],
+		"Taxonomy terms / Tagging Local": copydeckData[78],
+		"Related 4 Prods Local": copydeckData[80],
+	}
+
+	console.log(copydeckBasicData)
 }
 
 /*
