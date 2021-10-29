@@ -933,7 +933,7 @@ function ingredientsAndNutritionFormatter() {
 	return [
 		`<p><strong>${translations.ingredients}</strong></p><p>${copydeckIngredients.replace(/\n/g, '<br>')}</p>`,
 		`<p><strong>${translations.analyticalConstituents}</strong></p><p>${copydeckNutritionAnalyticalConstituents.replace(/\n/g, '<br>')}</p>
-		 <p><strong>${translations.nutritionalAdditives}</strong></p><p>${copydeckIngredientsNutritionalAdditives.replace(/\n/g, '<br>')}</p>`,
+		 <p><strong>${translations.nutritionalAdditives}</strong></p><p>${copydeckIngredientsNutritionalAdditives.replace(/\n[^\n]/g, '<br>')}</p>`,
 	]
 }
 
