@@ -145,7 +145,7 @@ snippetLoaderMessage.innerHTML = 'some message'
 headNode.append(loaderStyle)
 
 snippetLoaderContainer.style.cssText = `position: absolute; height: 100%; width: 100%;
-											  background-color: #e81c24; display:none; align-items: center;
+											  background-color: rgba(232, 28, 36, 0.8); display:none; align-items: center;
 											  justify-content: center; flex-direction: column;`
 
 snippetLoaderMessage.style.cssText = `color: #ffffff;`
