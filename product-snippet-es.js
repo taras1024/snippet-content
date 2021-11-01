@@ -364,14 +364,14 @@ async function editFields(fields) {
 		// }
 	}
 
-	// await setLanguageSelect()
+	await setLanguageSelect()
 }
 
 // Set language select field to market language
-// async function setLanguageSelect () {
-// 	const node = document.getElementById("snippetIframe").contentWindow.document.getElementById('edit-langcode-wrapper')
-// 	node.querySelector('select').options[1].setAttribute('selected', 'selected')
-// }
+async function setLanguageSelect () {
+	const node = document.getElementById("snippetIframe").contentWindow.document.getElementById('edit-langcode-wrapper')
+	node.querySelector('select').options[1].setAttribute('selected', 'selected')
+}
 
 async function setAuthor() {
 	const authorInput = snippetPageView.contentWindow.document.getElementById(
