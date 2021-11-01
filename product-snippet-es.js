@@ -19,7 +19,7 @@ const configJSON = `{
 	  {"name":"ingredients","selector":"getElementById('edit-field-product-ingredient-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
 	  {"name":"conditions","selector":"getElementById('edit-field-product-condition-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
 	  {"name":"specialNeeds","selector":"getElementById('edit-field-product-special-need-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
-	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox", "languages" : ["fr"]},
+	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox", "languages" : ["fr"]}
 	],
 	"seoFields":[
 	  {"name":"pageTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-title')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
