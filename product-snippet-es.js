@@ -364,7 +364,7 @@ async function editFields(fields) {
 		// }
 	}
 
-	await setLanguageSelect()
+	// await setLanguageSelect()
 }
 
 // Set language select field to market language
