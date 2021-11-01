@@ -20,6 +20,7 @@ const configJSON = `{
 	  {"name":"conditions","selector":"getElementById('edit-field-product-condition-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
 	  {"name":"specialNeeds","selector":"getElementById('edit-field-product-special-need-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
 	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox", "languages" : ["fr"]},
+	  {"name":"language","selector":"getElementById('edit-langcode-wrapper')","editor":"editLanguageSelect", "languages" : ["fr"]}
 	],
 	"seoFields":[
 	  {"name":"pageTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-title')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
@@ -40,11 +41,11 @@ const configJSON = `{
  }`
 
  const translations = {
-	features: "Caractéristiques",
-	ingredients: "Ingrédients",
-	analyticalConstituents: "Nutrition et constituants analytiques",
-	nutritionalAdditives: "Additifs nutritionnels",
-	feedingGuide: "Guide d'alimentation"
+	features: "Características",
+	ingredients: "Composición",
+	analyticalConstituents: "Componentes analíticos",
+	nutritionalAdditives: "Aditivos nutricionales",
+	feedingGuide: "Guía de alimentación"
  }
 /*
  *Snippet GUI start
@@ -364,7 +365,7 @@ async function editFields(fields) {
 		// }
 	}
 
-	setLanguageSelect()
+	await setLanguageSelect()
 }
 
 // Set language select field to market language
