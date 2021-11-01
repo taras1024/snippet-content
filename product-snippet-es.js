@@ -268,10 +268,11 @@ function changePage() {
 		aliasCheckBox.checked = false
 	}
 
-	const languageSelect = document.getElementById("snippetIframe").contentWindow.document.getElementById('edit-langcode-wrapper').querySelector('select')
-	if(languageSelect) {
-		languageSelect.options[1].setAttribute('selected', 'selected')
-	}
+	// Set language select field to market language by default when change page in iframe
+	// const languageSelect = document.getElementById("snippetIframe").contentWindow.document.querySelector('#edit-langcode-wrapper select')
+	// if(languageSelect) {
+	// 	languageSelect.options[1].setAttribute('selected', 'selected')
+	// }
 }
 
 
@@ -363,6 +364,14 @@ async function editFields(fields) {
 			)
 		// }
 	}
+
+	setLanguageSelect()
+}
+
+// Set language select field to market language
+async function setLanguageSelect () {
+	const node = document.getElementById("snippetIframe").contentWindow.document.getElementById('edit-langcode-wrapper')
+	node.querySelector('select').options[1].setAttribute('selected', 'selected')
 }
 
 async function setAuthor() {
