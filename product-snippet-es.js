@@ -19,7 +19,8 @@ const configJSON = `{
 	  {"name":"ingredients","selector":"getElementById('edit-field-product-ingredient-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
 	  {"name":"conditions","selector":"getElementById('edit-field-product-condition-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
 	  {"name":"specialNeeds","selector":"getElementById('edit-field-product-special-need-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
-	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox", "languages" : ["fr"]}
+	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox", "languages" : ["fr"]},
+	  {"name":"language","selector":"getElementById('edit-langcode-wrapper')","editor":"editLanguageSelect", "languages" : ["fr"]}
 	],
 	"seoFields":[
 	  {"name":"pageTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-title')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
@@ -262,11 +263,17 @@ function changePage() {
 	initSeoFieldsFlag = false
 
 	// ==============Uncheck by default Generate automatic URL alias==========
- 	const aliasCheckBox= document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
+ 	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
 	if (aliasCheckBox) {
 		aliasCheckBox.checked = false
 	}
+
+	const languageSelect = document.getElementById("snippetIframe").contentWindow.document.getElementById('edit-langcode-wrapper').querySelector('select')
+	if(languageSelect) {
+		languageSelect.options[1].setAttribute('selected', 'selected')
+	}
 }
+
 
 function checkLanguage(languages) {
 	return languages.filter((e) => e === language).length
