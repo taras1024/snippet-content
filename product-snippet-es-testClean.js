@@ -8,7 +8,7 @@ const configJSON = `{
 	  {"name":"newsletter","selector":"getElementById('edit-field-product-newsletter-wrapper')","editor":"editSelect"},
 	  {"name":"headLine","selector":"getElementById('edit-field-product-headline-wrapper')","editor":"editInput"},
 	  {"name":"highlights","selector":"getElementById('edit-field-product-highlight-wrapper')","editor":"editInputsGroup","quantity":4},
-	  {"name":"productSize","selector":"getElementById('edit-field-product-size-wrapper')","editor":"editInputsGroup", "languages" : ["fr","nl"]},
+	  {"name":"productSize","selector":"getElementById('edit-field-product-size-wrapper')","editor":"editInputsGroup"},
 	  {"name":"productOverview","selector":"getElementById('edit-field-product-overview-wrapper')","editor":"editEditorsGroup"},
 	  {"name":"ingredientsAndNutrition","selector":"getElementById('edit-field-product-nutrition-wrapper')","editor":"editEditorsGroup"},
 	  {"name":"feedingGuide","selector":"getElementById('edit-field-product-feeding-guide-wrapper')","editor":"editEditorsGroup"},
@@ -242,8 +242,6 @@ let initSeoFieldsFlag = false
 
 const config = JSON.parse(configJSON)
 
-let language = ''
-
 function changePage() {
 	const url = snippetPageView.contentWindow.location.href
 	// const urlLanguage = url.split('//')[1].split('/')[1]
@@ -266,9 +264,6 @@ function changePage() {
 }
 
 
-function checkLanguage(languages) {
-	return languages.filter((e) => e === language).length
-}
 
 snippetPageView.addEventListener('load', () => {
 	changePage()
@@ -330,11 +325,9 @@ async function parseDataToArray() {
 async function initFields(fields, flag) {
 	if (!flag) {
 		for (const field of fields) {
-			// if (checkLanguage(field.languages)) {
 				await eval(
 					`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
 				)
-			// }
 		}
 	}
 }
@@ -346,13 +339,11 @@ async function editFields(fields) {
 			(letter) => ` ${letter.toLowerCase()}`
 		)} block ...`
 
-		// if (checkLanguage(field.languages)) {
 			await eval(
 				`${field.editor}(${field.name}Node,${field.name}Formatter()${
 					field.quantity ? ',' + field.quantity : ''
 				})`
 			)
-		// }
 	}
 
 	await setLanguageSelect()
@@ -855,6 +846,8 @@ function productSizeFormatter() {
 				}
 			})
 			//be in copydeck order
+
+
 			//.sort((first, second) => first.length - second.length)
 	}
 
