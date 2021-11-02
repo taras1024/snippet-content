@@ -1,6 +1,6 @@
 const configJSON = `{
 	"customFields":[
-	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput", "languages" : ["fr"]},
+	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
 	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput", "languages" : ["fr","nl"]},
 	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput", "languages" : ["fr"]},
 	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput", "languages" : ["fr"]},
@@ -27,16 +27,7 @@ const configJSON = `{
 	  {"name":"openGraphTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-open-graph-og-title')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
 	  {"name":"openGraphDescription","selector":"getElementsByClassName('form-item-field-meta-tags-0-open-graph-og-description')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
 	  {"name":"urlAlias","selector":"getElementsByClassName('form-item-path-0-alias')[0]","editor":"editSeoField", "languages" : ["fr","nl"]}
-	],
-	"copydeck":{
-	  "translations":{
-		  "features":"Caractéristiques",
-		  "ingredients":"Ingrédients",
-		  "analyticalConstituents":"Nutrition et constituants analytiques",
-		  "nutritionalAdditives":"Additifs nutritionnels",
-		  "feedingGuide":"Guide d'alimentation"
-		}
-	}
+	]
  }`
 
  const translations = {
