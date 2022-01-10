@@ -239,6 +239,7 @@ function changePage() {
 	snippetUrl.value = url
 	// language = urlLanguage.length === 2 ? urlLanguage : ''
 	// initCustomFieldsFlag = false
+	initCustomFieldsFlag = false
 	initSeoFieldsFlag = false
 
 	// ==============Uncheck by default Generate automatic URL alias==========
