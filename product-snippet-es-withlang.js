@@ -1,33 +1,42 @@
 const configJSON = `{
 	"customFields":[
-	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
-	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput"},
-	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput"},
-	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput"},
-	  {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-fusepump-wrapper')","editor":"editInput"},
-	  {"name":"newsletter","selector":"getElementById('edit-field-product-newsletter-wrapper')","editor":"editSelect"},
-	  {"name":"headLine","selector":"getElementById('edit-field-product-headline-wrapper')","editor":"editInput"},
-	  {"name":"highlights","selector":"getElementById('edit-field-product-highlight-wrapper')","editor":"editInputsGroup","quantity":4},
-	  {"name":"productSize","selector":"getElementById('edit-field-product-size-wrapper')","editor":"editInputsGroup"},
-	  {"name":"productOverview","selector":"getElementById('edit-field-product-overview-wrapper')","editor":"editEditorsGroup"},
-	  {"name":"ingredientsAndNutrition","selector":"getElementById('edit-field-product-nutrition-wrapper')","editor":"editEditorsGroup"},
-	  {"name":"feedingGuide","selector":"getElementById('edit-field-product-feeding-guide-wrapper')","editor":"editEditorsGroup"},
-	  {"name":"petType","selector":"getElementById('edit-field-product-pet-type-wrapper')","editor":"editRadioBtn"},
-	  {"name":"brand","selector":"getElementById('edit-field-product-brand-wrapper')","editor":"editSelect"},
-	  {"name":"categories","selector":"getElementById('edit-field-product-category-wrapper')","editor":"editSelectsGroup"},
-	  {"name":"lifestages","selector":"getElementById('edit-field-product-lifestage-wrapper')","editor":"editSelectsGroup"},
-	  {"name":"ingredients","selector":"getElementById('edit-field-product-ingredient-wrapper')","editor":"editSelectsGroup"},
-	  {"name":"conditions","selector":"getElementById('edit-field-product-condition-wrapper')","editor":"editSelectsGroup"},
-	  {"name":"specialNeeds","selector":"getElementById('edit-field-product-special-need-wrapper')","editor":"editSelectsGroup"},
-	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox"}
+	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput", "languages" : ["fr"]},
+	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput", "languages" : ["fr","nl"]},
+	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput", "languages" : ["fr"]},
+	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput", "languages" : ["fr"]},
+	  {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-fusepump-wrapper')","editor":"editInput", "languages" : ["fr"]},
+	  {"name":"newsletter","selector":"getElementById('edit-field-product-newsletter-wrapper')","editor":"editSelect", "languages" : ["fr"]},
+	  {"name":"headLine","selector":"getElementById('edit-field-product-headline-wrapper')","editor":"editInput", "languages" : ["fr","nl"]},
+	  {"name":"highlights","selector":"getElementById('edit-field-product-highlight-wrapper')","editor":"editInputsGroup","quantity":4, "languages" : ["fr","nl"]},
+	  {"name":"productSize","selector":"getElementById('edit-field-product-size-wrapper')","editor":"editInputsGroup", "languages" : ["fr","nl"]},
+	  {"name":"productOverview","selector":"getElementById('edit-field-product-overview-wrapper')","editor":"editEditorsGroup", "languages" : ["fr","nl"]},
+	  {"name":"ingredientsAndNutrition","selector":"getElementById('edit-field-product-nutrition-wrapper')","editor":"editEditorsGroup", "languages" : ["fr","nl"]},
+	  {"name":"feedingGuide","selector":"getElementById('edit-field-product-feeding-guide-wrapper')","editor":"editEditorsGroup", "languages" : ["fr","nl"]},
+	  {"name":"petType","selector":"getElementById('edit-field-product-pet-type-wrapper')","editor":"editRadioBtn", "languages" : ["fr"]},
+	  {"name":"brand","selector":"getElementById('edit-field-product-brand-wrapper')","editor":"editSelect", "languages" : ["fr"]},
+	  {"name":"categories","selector":"getElementById('edit-field-product-category-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
+	  {"name":"lifestages","selector":"getElementById('edit-field-product-lifestage-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
+	  {"name":"ingredients","selector":"getElementById('edit-field-product-ingredient-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
+	  {"name":"conditions","selector":"getElementById('edit-field-product-condition-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
+	  {"name":"specialNeeds","selector":"getElementById('edit-field-product-special-need-wrapper')","editor":"editSelectsGroup", "languages" : ["fr"]},
+	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox", "languages" : ["fr"]}
 	],
 	"seoFields":[
-	  {"name":"pageTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-title')[0]","editor":"editSeoField"},
-	  {"name":"pageDescription","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-description')[0]","editor":"editSeoField"},
-	  {"name":"openGraphTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-open-graph-og-title')[0]","editor":"editSeoField"},
-	  {"name":"openGraphDescription","selector":"getElementsByClassName('form-item-field-meta-tags-0-open-graph-og-description')[0]","editor":"editSeoField"},
-	  {"name":"urlAlias","selector":"getElementsByClassName('form-item-path-0-alias')[0]","editor":"editSeoField"}
-	]
+	  {"name":"pageTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-title')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
+	  {"name":"pageDescription","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-description')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
+	  {"name":"openGraphTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-open-graph-og-title')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
+	  {"name":"openGraphDescription","selector":"getElementsByClassName('form-item-field-meta-tags-0-open-graph-og-description')[0]","editor":"editSeoField", "languages" : ["fr","nl"]},
+	  {"name":"urlAlias","selector":"getElementsByClassName('form-item-path-0-alias')[0]","editor":"editSeoField", "languages" : ["fr","nl"]}
+	],
+	"copydeck":{
+	  "translations":{
+		  "features":"Caractéristiques",
+		  "ingredients":"Ingrédients",
+		  "analyticalConstituents":"Nutrition et constituants analytiques",
+		  "nutritionalAdditives":"Additifs nutritionnels",
+		  "feedingGuide":"Guide d'alimentation"
+		}
+	}
  }`
 
  const translations = {
@@ -242,6 +251,8 @@ let initSeoFieldsFlag = false
 
 const config = JSON.parse(configJSON)
 
+let language = ''
+
 function changePage() {
 	const url = snippetPageView.contentWindow.location.href
 	// const urlLanguage = url.split('//')[1].split('/')[1]
@@ -264,6 +275,9 @@ function changePage() {
 }
 
 
+function checkLanguage(languages) {
+	return languages.filter((e) => e === language).length
+}
 
 snippetPageView.addEventListener('load', () => {
 	changePage()
@@ -325,9 +339,11 @@ async function parseDataToArray() {
 async function initFields(fields, flag) {
 	if (!flag) {
 		for (const field of fields) {
+			// if (checkLanguage(field.languages)) {
 				await eval(
 					`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
 				)
+			// }
 		}
 	}
 }
@@ -339,11 +355,13 @@ async function editFields(fields) {
 			(letter) => ` ${letter.toLowerCase()}`
 		)} block ...`
 
+		// if (checkLanguage(field.languages)) {
 			await eval(
 				`${field.editor}(${field.name}Node,${field.name}Formatter()${
 					field.quantity ? ',' + field.quantity : ''
 				})`
 			)
+		// }
 	}
 
 	await setLanguageSelect()
@@ -846,8 +864,6 @@ function productSizeFormatter() {
 				}
 			})
 			//be in copydeck order
-
-
 			//.sort((first, second) => first.length - second.length)
 	}
 

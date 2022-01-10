@@ -2,22 +2,13 @@ const configJSON = `{
 	"customFields":[
 	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
 	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput"},
-	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput"},
 	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput"},
-	  {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-fusepump-wrapper')","editor":"editInput"},
-	  {"name":"newsletter","selector":"getElementById('edit-field-product-newsletter-wrapper')","editor":"editSelect"},
-	  {"name":"headLine","selector":"getElementById('edit-field-product-headline-wrapper')","editor":"editInput"},
-	  {"name":"highlights","selector":"getElementById('edit-field-product-highlight-wrapper')","editor":"editInputsGroup","quantity":4},
-	  {"name":"productSize","selector":"getElementById('edit-field-product-size-wrapper')","editor":"editInputsGroup"},
-	  {"name":"productOverview","selector":"getElementById('edit-field-product-overview-wrapper')","editor":"editEditorsGroup"},
-	  {"name":"ingredientsAndNutrition","selector":"getElementById('edit-field-product-nutrition-wrapper')","editor":"editEditorsGroup"},
-	  {"name":"feedingGuide","selector":"getElementById('edit-field-product-feeding-guide-wrapper')","editor":"editEditorsGroup"},
+      {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-buy-link-wrapper')","editor":"editInput"},
 	  {"name":"petType","selector":"getElementById('edit-field-product-pet-type-wrapper')","editor":"editRadioBtn"},
 	  {"name":"brand","selector":"getElementById('edit-field-product-brand-wrapper')","editor":"editSelect"},
 	  {"name":"categories","selector":"getElementById('edit-field-product-category-wrapper')","editor":"editSelectsGroup"},
 	  {"name":"lifestages","selector":"getElementById('edit-field-product-lifestage-wrapper')","editor":"editSelectsGroup"},
 	  {"name":"ingredients","selector":"getElementById('edit-field-product-ingredient-wrapper')","editor":"editSelectsGroup"},
-	  {"name":"conditions","selector":"getElementById('edit-field-product-condition-wrapper')","editor":"editSelectsGroup"},
 	  {"name":"specialNeeds","selector":"getElementById('edit-field-product-special-need-wrapper')","editor":"editSelectsGroup"},
 	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox"}
 	],
@@ -30,13 +21,13 @@ const configJSON = `{
 	]
  }`
 
- const translations = {
-	features: "Características",
-	ingredients: "Composición",
-	analyticalConstituents: "Componentes analíticos",
-	nutritionalAdditives: "Aditivos nutricionales",
-	feedingGuide: "Guía de alimentación"
- }
+const translations = {
+	features: "Features",
+	ingredients: "Ingredients",
+	analyticalConstituents: "Analytical Constituents",
+	nutritionalAdditives: "Nutritional Additives",
+	feedingGuide: "Feeding Guide"
+}
 /*
  *Snippet GUI start
  */
@@ -135,8 +126,6 @@ snippetLoaderMessage.innerHTML = 'some message'
 
 headNode.append(loaderStyle)
 
-const accessToken = 'U2FsdGVkX19W5qHMY7fyRK5ssHTTXr3UAExDQeWPC/Y='
-
 snippetLoaderContainer.style.cssText = `position: absolute; height: 100%; width: 100%;
 											  background-color: rgba(232, 28, 36, 0.8); display:none; align-items: center;
 											  justify-content: center; flex-direction: column;`
@@ -182,7 +171,7 @@ snippetGoBtn.style.cssText = `border-radius: 0 20px 20px 0; padding:  5px 20px; 
 
 snippetInput.style.cssText = `width: 400px; border-radius:  20px; resize: none; padding: 4px 10px; outline: none; background-color: #0f0f0f;
 										 border: 1px solid #00385a; color: #fff;`
-								
+
 /*snippetPageView.setAttribute(
 	'src',
 	'https://live-74999-petcare-purinattt-belgium.pantheonsite.io/fr/node/5016/edit'
@@ -253,7 +242,7 @@ function changePage() {
 	initSeoFieldsFlag = false
 
 	// ==============Uncheck by default Generate automatic URL alias==========
- 	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
+	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
 	if (aliasCheckBox) {
 		aliasCheckBox.checked = false
 	}
@@ -327,9 +316,9 @@ async function parseDataToArray() {
 async function initFields(fields, flag) {
 	if (!flag) {
 		for (const field of fields) {
-				await eval(
-					`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
-				)
+			await eval(
+				`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
+			)
 		}
 	}
 }
@@ -341,18 +330,17 @@ async function editFields(fields) {
 			(letter) => ` ${letter.toLowerCase()}`
 		)} block ...`
 
-			await eval(
-				`${field.editor}(${field.name}Node,${field.name}Formatter()${
-					field.quantity ? ',' + field.quantity : ''
-				})`
-			)
+		await eval(
+			`${field.editor}(${field.name}Node,${field.name}Formatter()${field.quantity ? ',' + field.quantity : ''
+			})`
+		)
 	}
 
 	await setLanguageSelect()
 }
 
 // Set language select field to market language
-async function setLanguageSelect () {
+async function setLanguageSelect() {
 	const node = document.getElementById("snippetIframe").contentWindow.document.getElementById('edit-langcode-wrapper')
 	node.querySelector('select').options[1].setAttribute('selected', 'selected')
 }
@@ -674,7 +662,7 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 	foundedOrnotFoundValueNode.style.cssText = `background: ${addedOrNotAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
 	foundedOrnotFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
 
-	if(node.id === "edit-field-product-range-wrapper" 
+	if (node.id === "edit-field-product-range-wrapper"
 		|| node.id === "edit-field-product-newsletter-wrapper"
 		|| node.id === "edit-field-product-brand-wrapper"
 		|| node.id === "edit-field-product-pet-type-wrapper") {
@@ -684,47 +672,47 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 	}
 }
 
-function showConsoleCopydeckBasicData () {
+function showConsoleCopydeckBasicData() {
 	copydeckBasicData = {
-		"Product Title Local": copydeckData[6],
-		"TTT URL Match": copydeckData[8],
-		"GTIN Local": copydeckData[10],
-		"bvID Local": copydeckData[11],
-		"fpID Local": copydeckData[12],
-		"Brand Local": copydeckData[14],
-		"Pet Type Local": copydeckData[16],
-		"Pack Sizes Local": copydeckData[18],
-		"Headline Local": copydeckData[20],
-		"Description Final Local": copydeckData[23],
-		"Feature 1 Local": copydeckData[25],
-		"Feature 2 Local": copydeckData[27],
-		"Feature 3 Local": copydeckData[29],
-		"Feature 4 Local": copydeckData[31],
-		"Feature 5 Local": copydeckData[33],
-		"Feature 6 Local": copydeckData[35],
-		"Feature 7 Local": copydeckData[37],
-		"Feature 8 Local": copydeckData[39],
-		"Feature 9 Local": copydeckData[41],
-		"Feature 10 Local": copydeckData[43],
-		"Composition Local": copydeckData[45],
-		"Analytical Constituents Local": copydeckData[47],
-		"Nutritional Additives Local": copydeckData[49],
-		"Feeding Guidelines Local": copydeckData[51],
-		"Food Type Local": copydeckData[53],
-		"Range Local": copydeckData[55],
-		"Category Local": copydeckData[57],
-		"Lifestage Local": copydeckData[59],
-		"Ingredients Local": copydeckData[61],
-		"Conditions Local (PPVD only)": copydeckData[63],
-		"Special Needs  Local": copydeckData[65],
-		"TTT URL Local": copydeckData[66],
-		"SEO Title Local": copydeckData[68],
-		"SEO Description Local": copydeckData[70],
-		"OG Title Local": copydeckData[72],
-		"OG Description Local": copydeckData[74],
-		"Footer Newsletter Local": copydeckData[76],
-		"Taxonomy terms / Tagging Local": copydeckData[78],
-		"Related 4 Prods Local": copydeckData[80],
+		"Product Title Local": copydeckData[4],
+		"TTT URL Match": copydeckData[20],
+		"GTIN Local": copydeckData[3],
+		// "bvID Local": copydeckData[11],
+		// "fpID Local": copydeckData[10],
+		"Brand Local": copydeckData[8],
+		"Pet Type Local": copydeckData[12],
+		// "Pack Sizes Local": copydeckData[18],
+		// "Headline Local": copydeckData[20],
+		// "Description Final Local": copydeckData[23],
+		// "Feature 1 Local": copydeckData[25],
+		// "Feature 2 Local": copydeckData[27],
+		// "Feature 3 Local": copydeckData[29],
+		// "Feature 4 Local": copydeckData[31],
+		// "Feature 5 Local": copydeckData[33],
+		// "Feature 6 Local": copydeckData[35],
+		// "Feature 7 Local": copydeckData[37],
+		// "Feature 8 Local": copydeckData[39],
+		// "Feature 9 Local": copydeckData[41],
+		// "Feature 10 Local": copydeckData[43],
+		// "Composition Local": copydeckData[45],
+		// "Analytical Constituents Local": copydeckData[47],
+		// "Nutritional Additives Local": copydeckData[49],
+		// "Feeding Guidelines Local": copydeckData[51],
+		// "Food Type Local": copydeckData[11],
+		"Range Local": copydeckData[9],
+		"Category Local": copydeckData[11],
+		"Lifestage Local": copydeckData[13],
+		"Ingredients Local": copydeckData[14],
+		// "Conditions Local (PPVD only)": copydeckData[63],
+		"Special Needs  Local": copydeckData[15],
+		"TTT URL Local": copydeckData[20],
+		"SEO Title Local": copydeckData[18],
+		"SEO Description Local": copydeckData[19],
+		"OG Title Local": copydeckData[18],
+		"OG Description Local": copydeckData[19],
+		// "Footer Newsletter Local": copydeckData[76],
+		// "Taxonomy terms / Tagging Local": copydeckData[78],
+		// "Related 4 Prods Local": copydeckData[80],
 	}
 
 	var str = JSON.stringify(copydeckBasicData, null, 4)
@@ -753,6 +741,7 @@ function showConsoleCopydeckBasicData () {
 /*FORMATTERS START*/
 
 /*CUSTOM FIELDS FORMATTERS*/
+
 function internalTitleFormatter() {
 	return externalTitleFormatter() && GTINFormatter()
 		? `${GTINFormatter()} ${externalTitleFormatter()}`
@@ -760,30 +749,34 @@ function internalTitleFormatter() {
 }
 
 function externalTitleFormatter() {
-	const copydeckTitle = copydeckData[6].trim()
-	const copydeckBrand = copydeckData[14].trim()
+	const copydeckTitle = copydeckData[4].trim()
+	const copydeckBrand = copydeckData[8].trim()
 
 	return copydeckTitle ? copydeckTitle : ''
 }
 
 function bazaavoiceProductIDFormatter() {
-	const copydeckId = copydeckData[11].replace(/[^0-9]/gm, '').trim()
-	return copydeckId.length > 0 && copydeckId !== '0' ? copydeckId : ''
+	//const copydeckId = copydeckData[3].replace(/[^0-9]/gm, '').trim()
+	//return copydeckId.length > 0 && copydeckId !== '0' ? copydeckId : ''
+	return ""
 }
 
 function GTINFormatter() {
-	const copydeckGTIN = copydeckData[10]
-		.split(' ')[0]
-		.replace(/[^0-9]/gm, '')
-		.trim()
-	return copydeckGTIN.length > 0 && copydeckGTIN !== '0' ? copydeckGTIN : ''
+	const copydeckGTIN = copydeckData[3]
+	//	.split(' ')[0]
+	//	.replace(/[^0-9]/gm, '')
+	//	.trim()
+	// return copydeckGTIN.length > 0 && copydeckGTIN !== '0' ? copydeckGTIN : ''
+	return copydeckGTIN
 }
 
 function buyNowFusepumpFormatter() {
-	const copydeckBuyNowFusepump = copydeckData[12].trim() //.replace(/[^0-9]/gm, '').trim()
-	return copydeckBuyNowFusepump.length > 0 && copydeckBuyNowFusepump !== '0'
-		? copydeckBuyNowFusepump
-		: ''
+	const copydeckBuyNowFusepump = copydeckData[10]
+	//const copydeckBuyNowFusepump = copydeckData[12].trim() //.replace(/[^0-9]/gm, '').trim()
+	//return copydeckBuyNowFusepump.length > 0 && copydeckBuyNowFusepump !== '0'
+	//	? copydeckBuyNowFusepump
+	//	: ''
+	return copydeckBuyNowFusepump
 }
 
 function newsletterFormatter() {
@@ -793,15 +786,17 @@ function newsletterFormatter() {
 	return copydecPetType && copydecNewsletter
 		? [copydecPetType, copydecNewsletter]
 		: []
+	return ""
 }
 
 function headLineFormatter() {
 	const prodCategoryLocal = copydeckData[20] //old 22
 
 	return prodCategoryLocal ? prodCategoryLocal : ''
+	return ""
 }
 
-function highlightsFormatter() {
+/* function highlightsFormatter() {
 	const firstHighlightIndex = 25 // old 36
 	const lastHighlightIndex = 43 // old 54
 
@@ -823,40 +818,43 @@ function highlightsFormatter() {
 
 	return highlights
 }
+*/
 
 /**
  * TODO sorting
  */
-function productSizeFormatter() {
-	const copydeckPackSize = copydeckData[18] //old 32
-	let packSizes = []
 
-	if (copydeckPackSize) {
-		packSizes = copydeckPackSize
-			.split(' ')
-			.filter((val) => /\d/.test(val))
-			.map((val) => {
-				if (val.includes('x')) {
-					return `${val.replace(/[^x0-9\s]/gi, '')}g`
-				// } else if (val.includes('kg')) {
-				} else if (/kg/i.test(val)) {
-					let parsedVal = val.replace(/[^0-9\,]/gi, '')
-					return `${parsedVal}kg`
-				} else {
-					let parsedVal = parseInt(val.replace(/[^0-9]/gi, ''))
-					return parsedVal > 1000 ? `${parsedVal / 1000}kg` : `${parsedVal}g`
-				}
-			})
-			//be in copydeck order
+/* function productSizeFormatter() {
+   const copydeckPackSize = copydeckData[18] //old 32
+   let packSizes = []
+
+   if (copydeckPackSize) {
+	   packSizes = copydeckPackSize
+		   .split(' ')
+		   .filter((val) => /\d/.test(val))
+		   .map((val) => {
+			   if (val.includes('x')) {
+				   return `${val.replace(/[^x0-9\s]/gi, '')}g`
+			   // } else if (val.includes('kg')) {
+			   } else if (/kg/i.test(val)) {
+				   let parsedVal = val.replace(/[^0-9\,]/gi, '')
+				   return `${parsedVal}kg`
+			   } else {
+				   let parsedVal = parseInt(val.replace(/[^0-9]/gi, ''))
+				   return parsedVal > 1000 ? `${parsedVal / 1000}kg` : `${parsedVal}g`
+			   }
+		   })
+		   //be in copydeck order
 
 
-			//.sort((first, second) => first.length - second.length)
-	}
+		   //.sort((first, second) => first.length - second.length)
+   }
 
-	return packSizes
+   return packSizes
 }
+*/
 
-function productOverviewFormatter() {
+/* function productOverviewFormatter() {
 	const copydeckProdDesc1 = copydeckData[23].trim() //old 34
 
 	const firstHighlightIndex = 25 //old 36
@@ -948,35 +946,35 @@ function feedingGuideFormatter() {
 			.replace(/\n/g, '<br>')}</p>`,
 	]
 }
-
+*/
 /*TAXONOMY FORMATTERS*/
 function petTypeFormatter() {
-	const copydeckPetType = copydeckData[16] //old 16
+	const copydeckPetType = copydeckData[12] //old 16
 	return copydeckPetType
 }
 
 function brandFormatter() {
-	const copydeckBrand = copydeckData[14] //old 14
+	const copydeckBrand = copydeckData[8] //old 14
 	return [copydeckBrand]
 }
 
 function categoriesFormatter() {
-	const copydeckPetType = copydeckData[16] //old 16
-	const copydeckFoodTypeLocal = copydeckData[57] //old 21
+	const copydeckPetType = copydeckData[12] //old 16
+	const copydeckFoodTypeLocal = copydeckData[11] //old 21
 
 	return [[copydeckPetType, copydeckFoodTypeLocal]]
 }
 
 function lifestagesFormatter() {
-	const copydeckPetType = copydeckData[16] //old 16
-	const copydeckLifestageLocal = copydeckData[59] //old 24
+	const copydeckPetType = copydeckData[12] //old 16
+	const copydeckLifestageLocal = copydeckData[13] //old 24
 
 	return [[copydeckLifestageLocal, copydeckPetType]]
 }
 
 function ingredientsFormatter() {
-	const ingredients = copydeckData[61].split(',') //old 26
-	const copydeckPetType = copydeckData[16] //old 16
+	const ingredients = copydeckData[14].split(',') //old 26
+	const copydeckPetType = copydeckData[12] //old 16
 
 	let data = []
 
@@ -990,8 +988,8 @@ function ingredientsFormatter() {
 }
 
 function conditionsFormatter() {
-	const conditions = copydeckData[63].trim() //old 28
-	const copydeckPetType = copydeckData[16] //old 16
+	const conditions = copydeckData[15].trim() //old 28
+	const copydeckPetType = copydeckData[12] //old 16
 
 	return conditions.trim().length > 5 && copydeckPetType.trim()
 		? [[conditions, copydeckPetType]]
@@ -999,8 +997,8 @@ function conditionsFormatter() {
 }
 
 function specialNeedsFormatter() {
-	const specialNeeds = copydeckData[65].trim() //old 30
-	const copydeckPetType = copydeckData[16] //old 16
+	const specialNeeds = copydeckData[15].trim() //old 30
+	const copydeckPetType = copydeckData[12] //old 16
 
 	return specialNeeds.trim().length > 5 && copydeckPetType.trim()
 		? [[specialNeeds, copydeckPetType]]
@@ -1008,8 +1006,8 @@ function specialNeedsFormatter() {
 }
 
 function rangesFormatter() {
-	const copydeckRange = copydeckData[55].trim() //old 20
-	const copydeckBrand = copydeckData[14] //old 14
+	const copydeckRange = copydeckData[9].trim() //old 20
+	const copydeckBrand = copydeckData[8] //old 14
 
 	return copydeckRange.trim() && copydeckBrand.trim()
 		? [[copydeckRange, copydeckBrand]]
@@ -1019,23 +1017,23 @@ function rangesFormatter() {
 /*SEO FORMATTERS */
 
 function pageTitleFormatter() {
-	const seoTitle = copydeckData[68] //old 66
+	const seoTitle = copydeckData[18] //old 66
 	return seoTitle ? seoTitle : ''
 }
 function pageDescriptionFormatter() {
-	const seoDescription = copydeckData[70] //old 68
+	const seoDescription = copydeckData[19] //old 68
 	return seoDescription ? seoDescription : ''
 }
 function openGraphTitleFormatter() {
-	const seoOGTitle = copydeckData[72] //old 70
+	const seoOGTitle = copydeckData[18] //old 70
 	return seoOGTitle ? seoOGTitle : ''
 }
 function openGraphDescriptionFormatter() {
-	const seoOGDescription = copydeckData[74] //old 72
+	const seoOGDescription = copydeckData[19] //old 72
 	return seoOGDescription ? seoOGDescription : ''
 }
 function urlAliasFormatter() {
-	const urlAlias = copydeckData[8]
+	const urlAlias = copydeckData[20]
 	return urlAlias ? urlAlias : ''
 }
 
