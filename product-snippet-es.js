@@ -30,13 +30,13 @@ const configJSON = `{
 	]
  }`
 
- const translations = {
+const translations = {
 	features: "Características",
 	ingredients: "Composición",
 	analyticalConstituents: "Componentes analíticos",
 	nutritionalAdditives: "Aditivos nutricionales",
 	feedingGuide: "Guía de alimentación"
- }
+}
 /*
  *Snippet GUI start
  */
@@ -182,7 +182,7 @@ snippetGoBtn.style.cssText = `border-radius: 0 20px 20px 0; padding:  5px 20px; 
 
 snippetInput.style.cssText = `width: 400px; border-radius:  20px; resize: none; padding: 4px 10px; outline: none; background-color: #0f0f0f;
 										 border: 1px solid #00385a; color: #fff;`
-								
+
 /*snippetPageView.setAttribute(
 	'src',
 	'https://live-74999-petcare-purinattt-belgium.pantheonsite.io/fr/node/5016/edit'
@@ -249,11 +249,11 @@ function changePage() {
 	// const urlLanguage = url.split('//')[1].split('/')[1]
 	snippetUrl.value = url
 	// language = urlLanguage.length === 2 ? urlLanguage : ''
-	// initCustomFieldsFlag = false
+	initCustomFieldsFlag = false
 	initSeoFieldsFlag = false
 
 	// ==============Uncheck by default Generate automatic URL alias==========
- 	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
+	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
 	if (aliasCheckBox) {
 		aliasCheckBox.checked = false
 	}
@@ -327,9 +327,9 @@ async function parseDataToArray() {
 async function initFields(fields, flag) {
 	if (!flag) {
 		for (const field of fields) {
-				await eval(
-					`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
-				)
+			await eval(
+				`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
+			)
 		}
 	}
 }
@@ -341,18 +341,17 @@ async function editFields(fields) {
 			(letter) => ` ${letter.toLowerCase()}`
 		)} block ...`
 
-			await eval(
-				`${field.editor}(${field.name}Node,${field.name}Formatter()${
-					field.quantity ? ',' + field.quantity : ''
-				})`
-			)
+		await eval(
+			`${field.editor}(${field.name}Node,${field.name}Formatter()${field.quantity ? ',' + field.quantity : ''
+			})`
+		)
 	}
 
 	await setLanguageSelect()
 }
 
 // Set language select field to market language
-async function setLanguageSelect () {
+async function setLanguageSelect() {
 	const node = document.getElementById("snippetIframe").contentWindow.document.getElementById('edit-langcode-wrapper')
 	node.querySelector('select').options[1].setAttribute('selected', 'selected')
 }
@@ -674,7 +673,7 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 	foundedOrnotFoundValueNode.style.cssText = `background: ${addedOrNotAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
 	foundedOrnotFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
 
-	if(node.id === "edit-field-product-range-wrapper" 
+	if (node.id === "edit-field-product-range-wrapper"
 		|| node.id === "edit-field-product-newsletter-wrapper"
 		|| node.id === "edit-field-product-brand-wrapper"
 		|| node.id === "edit-field-product-pet-type-wrapper") {
@@ -684,7 +683,7 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 	}
 }
 
-function showConsoleCopydeckBasicData () {
+function showConsoleCopydeckBasicData() {
 	copydeckBasicData = {
 		"Product Title Local": copydeckData[6],
 		"TTT URL Match": copydeckData[8],
@@ -838,7 +837,7 @@ function productSizeFormatter() {
 			.map((val) => {
 				if (val.includes('x')) {
 					return `${val.replace(/[^x0-9\s]/gi, '')}g`
-				// } else if (val.includes('kg')) {
+					// } else if (val.includes('kg')) {
 				} else if (/kg/i.test(val)) {
 					let parsedVal = val.replace(/[^0-9\,]/gi, '')
 					return `${parsedVal}kg`
@@ -847,10 +846,10 @@ function productSizeFormatter() {
 					return parsedVal > 1000 ? `${parsedVal / 1000}kg` : `${parsedVal}g`
 				}
 			})
-			//be in copydeck order
+		//be in copydeck order
 
 
-			//.sort((first, second) => first.length - second.length)
+		//.sort((first, second) => first.length - second.length)
 	}
 
 	return packSizes
@@ -872,16 +871,16 @@ function productOverviewFormatter() {
 	function buildDescription(descArr) {
 		return descArr[1].length > 0
 			? `<p>${descArr[1]
-					.join('')
-					.split(/[\s][*]/gm)
-					.map((desc) => {
-						const index = desc.lastIndexOf('*') + 1
-						return desc
-							.split('')
-							.map((e, i) => (i === index ? e.toUpperCase() : e))
-							.join('')
-					})
-					.join('</p><p> *')}</p>`
+				.join('')
+				.split(/[\s][*]/gm)
+				.map((desc) => {
+					const index = desc.lastIndexOf('*') + 1
+					return desc
+						.split('')
+						.map((e, i) => (i === index ? e.toUpperCase() : e))
+						.join('')
+				})
+				.join('</p><p> *')}</p>`
 			: ''
 	}
 
