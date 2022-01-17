@@ -181,7 +181,7 @@ snippetGoBtn.style.cssText = `border-radius: 0 20px 20px 0; padding:  5px 20px; 
 
 snippetInput.style.cssText = `width: 400px; border-radius:  20px; resize: none; padding: 4px 10px; outline: none; background-color: #0f0f0f;
 										 border: 1px solid #00385a; color: #fff;`
-								
+
 /*snippetPageView.setAttribute(
 	'src',
 	'https://live-74999-petcare-purinattt-belgium.pantheonsite.io/fr/node/5016/edit'
@@ -254,7 +254,7 @@ function changePage() {
 	initSeoFieldsFlag = false
 
 	// ==============Uncheck by default Generate automatic URL alias==========
- 	const aliasCheckBox= document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
+	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
 	if (aliasCheckBox) {
 		aliasCheckBox.checked = false
 	}
@@ -321,9 +321,9 @@ async function initFields(fields, flag) {
 	if (!flag) {
 		for (const field of fields) {
 			// if (checkLanguage(field.languages)) {
-				await eval(
-					`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
-				)
+			await eval(
+				`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
+			)
 			// }
 		}
 	}
@@ -337,11 +337,10 @@ async function editFields(fields) {
 		)} block ...`
 
 		// if (checkLanguage(field.languages)) {
-			await eval(
-				`${field.editor}(${field.name}Node,${field.name}Formatter()${
-					field.quantity ? ',' + field.quantity : ''
-				})`
-			)
+		await eval(
+			`${field.editor}(${field.name}Node,${field.name}Formatter()${field.quantity ? ',' + field.quantity : ''
+			})`
+		)
 		// }
 	}
 }
@@ -480,6 +479,7 @@ async function editSelect(node, values) {
 				option.removeAttribute('selected')
 				option.setAttribute('selected', 'selected')
 				matchFound = true
+				select.dispatchEvent(new Event('change'));
 				break
 			}
 		}
@@ -783,16 +783,16 @@ function productOverviewFormatter() {
 	function buildDescription(descArr) {
 		return descArr[1].length > 0
 			? `<p>${descArr[1]
-					.join('')
-					.split(/[\s][*]/gm)
-					.map((desc) => {
-						const index = desc.lastIndexOf('*') + 1
-						return desc
-							.split('')
-							.map((e, i) => (i === index ? e.toUpperCase() : e))
-							.join('')
-					})
-					.join('</p><p> *')}</p>`
+				.join('')
+				.split(/[\s][*]/gm)
+				.map((desc) => {
+					const index = desc.lastIndexOf('*') + 1
+					return desc
+						.split('')
+						.map((e, i) => (i === index ? e.toUpperCase() : e))
+						.join('')
+				})
+				.join('</p><p> *')}</p>`
 			: ''
 	}
 

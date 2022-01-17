@@ -39,13 +39,13 @@ const configJSON = `{
 	}
  }`
 
- const translations = {
+const translations = {
 	features: "Caractéristiques",
 	ingredients: "Ingrédients",
 	analyticalConstituents: "Nutrition et constituants analytiques",
 	nutritionalAdditives: "Additifs nutritionnels",
 	feedingGuide: "Guide d'alimentation"
- }
+}
 /*
  *Snippet GUI start
  */
@@ -189,7 +189,7 @@ snippetGoBtn.style.cssText = `border-radius: 0 20px 20px 0; padding:  5px 20px; 
 
 snippetInput.style.cssText = `width: 400px; border-radius:  20px; resize: none; padding: 4px 10px; outline: none; background-color: #0f0f0f;
 										 border: 1px solid #00385a; color: #fff;`
-								
+
 /*snippetPageView.setAttribute(
 	'src',
 	'https://live-74999-petcare-purinattt-belgium.pantheonsite.io/fr/node/5016/edit'
@@ -262,7 +262,7 @@ function changePage() {
 	initSeoFieldsFlag = false
 
 	// ==============Uncheck by default Generate automatic URL alias==========
- 	const aliasCheckBox= document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
+	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
 	if (aliasCheckBox) {
 		aliasCheckBox.checked = false
 	}
@@ -335,9 +335,9 @@ async function initFields(fields, flag) {
 	if (!flag) {
 		for (const field of fields) {
 			// if (checkLanguage(field.languages)) {
-				await eval(
-					`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
-				)
+			await eval(
+				`${field.name}Node = snippetPageView.contentWindow.document.${field.selector}`
+			)
 			// }
 		}
 	}
@@ -351,11 +351,10 @@ async function editFields(fields) {
 		)} block ...`
 
 		// if (checkLanguage(field.languages)) {
-			await eval(
-				`${field.editor}(${field.name}Node,${field.name}Formatter()${
-					field.quantity ? ',' + field.quantity : ''
-				})`
-			)
+		await eval(
+			`${field.editor}(${field.name}Node,${field.name}Formatter()${field.quantity ? ',' + field.quantity : ''
+			})`
+		)
 		// }
 	}
 }
@@ -418,10 +417,10 @@ async function editEditorsGroup(node, values, numberOfFields = values.length) {
 			iframe.contentWindow.document.querySelector('body').innerHTML = value
 
 			//adding formating buttons
-			if(node.id === "edit-field-product-nutrition-wrapper") {
-				if(index === 0) {
+			if (node.id === "edit-field-product-nutrition-wrapper") {
+				if (index === 0) {
 					addFormatingBtn(iframe, 'composition')
-				} else if(index === 1) {
+				} else if (index === 1) {
 					addFormatingBtn(iframe, 'analytical')
 					addFormatingBtn(iframe, 'additives')
 				}
@@ -503,6 +502,7 @@ async function editSelect(node, values) {
 				select.style.background = addedColor
 				option.removeAttribute('selected')
 				option.setAttribute('selected', 'selected')
+				select.dispatchEvent(new Event('change'));
 				matchFound = true
 				break
 			}
@@ -687,7 +687,7 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 	foundedOrnotFoundValueNode.style.cssText = `background: ${addedOrNotAddedColor}; padding: 5px; width: fit-content; border-radius: 5px; margin-bottom: 5px;`
 	foundedOrnotFoundValueNode.innerHTML = `<b>Copydeck value:</b> ${values.join(' ')}`
 
-	if(node.id === "edit-field-product-range-wrapper" 
+	if (node.id === "edit-field-product-range-wrapper"
 		|| node.id === "edit-field-product-newsletter-wrapper"
 		|| node.id === "edit-field-product-brand-wrapper"
 		|| node.id === "edit-field-product-pet-type-wrapper") {
@@ -697,7 +697,7 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 	}
 }
 
-function showConsoleCopydeckBasicData () {
+function showConsoleCopydeckBasicData() {
 	copydeckBasicData = {
 		"Product Title Local": copydeckData[6],
 		"TTT URL Match": copydeckData[8],
@@ -851,7 +851,7 @@ function productSizeFormatter() {
 			.map((val) => {
 				if (val.includes('x')) {
 					return `${val.replace(/[^x0-9\s]/gi, '')}g`
-				// } else if (val.includes('kg')) {
+					// } else if (val.includes('kg')) {
 				} else if (/kg/i.test(val)) {
 					let parsedVal = val.replace(/[^0-9\,]/gi, '')
 					return `${parsedVal}kg`
@@ -860,8 +860,8 @@ function productSizeFormatter() {
 					return parsedVal > 1000 ? `${parsedVal / 1000}kg` : `${parsedVal}g`
 				}
 			})
-			//be in copydeck order
-			//.sort((first, second) => first.length - second.length)
+		//be in copydeck order
+		//.sort((first, second) => first.length - second.length)
 	}
 
 	return packSizes
@@ -883,16 +883,16 @@ function productOverviewFormatter() {
 	function buildDescription(descArr) {
 		return descArr[1].length > 0
 			? `<p>${descArr[1]
-					.join('')
-					.split(/[\s][*]/gm)
-					.map((desc) => {
-						const index = desc.lastIndexOf('*') + 1
-						return desc
-							.split('')
-							.map((e, i) => (i === index ? e.toUpperCase() : e))
-							.join('')
-					})
-					.join('</p><p> *')}</p>`
+				.join('')
+				.split(/[\s][*]/gm)
+				.map((desc) => {
+					const index = desc.lastIndexOf('*') + 1
+					return desc
+						.split('')
+						.map((e, i) => (i === index ? e.toUpperCase() : e))
+						.join('')
+				})
+				.join('</p><p> *')}</p>`
 			: ''
 	}
 
@@ -1058,10 +1058,10 @@ function urlAliasFormatter() {
 
 
 
- /*------------Aditional functionality------------
+/*------------Aditional functionality------------
 -----Buttons for Composition, Analytical Constituents,
 -----Nutrition Additives fields, that format content
------inside those html blocks------------------- */ 
+-----inside those html blocks------------------- */
 
 const compositionSeparator = ','
 const analyticalSeparator = ','
@@ -1071,31 +1071,31 @@ function addFormatingBtn(iframe, contentTypeStr) {
 	const formatingBtn = document.createElement('a')
 	formatingBtn.className = 'cke_button'
 
-	if(contentTypeStr === "composition") {
-		formatingBtn.innerHTML = 'cF'  
+	if (contentTypeStr === "composition") {
+		formatingBtn.innerHTML = 'cF'
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
 		formatingBtn.addEventListener('click', () => compositionFormatingBtnHandler(iframe, compositionSeparator))
-	} else if(contentTypeStr === "analytical") {
-		formatingBtn.innerHTML = 'aF'  
+	} else if (contentTypeStr === "analytical") {
+		formatingBtn.innerHTML = 'aF'
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
 		formatingBtn.addEventListener('click', () => analyticalFormatingBtnHandler(iframe, analyticalSeparator))
-	} else if(contentTypeStr === "additives") {
-		formatingBtn.innerHTML = 'adF'  
+	} else if (contentTypeStr === "additives") {
+		formatingBtn.innerHTML = 'adF'
 		const prevIframeElement = iframe.previousElementSibling
 		prevIframeElement.parentElement.previousElementSibling.appendChild(formatingBtn)
 		formatingBtn.addEventListener('click', () => additivesFormatingBtnHandler(iframe, additivesSeparator))
 	}
 }
 
-function compositionFormatingBtnHandler (iframe, separator) {
+function compositionFormatingBtnHandler(iframe, separator) {
 	event.preventDefault()
 	let compositionParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)')
 	let compositionHTML = compositionParagraph.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
-	if(!msgBlock) {
+	if (!msgBlock) {
 		alert('Check window does not exist!!!')
 	} else {
 		setMessageWindowHTML('Composition Content', compositionHTML)
@@ -1105,8 +1105,8 @@ function compositionFormatingBtnHandler (iframe, separator) {
 	let matchesArr = [...compositionHTML.matchAll(/\([^)]*\)/g)]
 	let tmpStr = compositionHTML
 
-	for(let m of matchesArr) {
-		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(`${separator}`, '^='))    
+	for (let m of matchesArr) {
+		tmpStr = tmpStr.replace(m[0], m[0].replaceAll(`${separator}`, '^='))
 	}
 	//-----------------------------------------------------------
 
@@ -1117,13 +1117,13 @@ function compositionFormatingBtnHandler (iframe, separator) {
 }
 
 
-function analyticalFormatingBtnHandler (iframe, separator) {
+function analyticalFormatingBtnHandler(iframe, separator) {
 	event.preventDefault()
 	let analyticalParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(2)')
 	let analyticalHTML = analyticalParagraph.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
-	if(!msgBlock) {
+	if (!msgBlock) {
 		alert('Check window does not exist!!!')
 	} else {
 		setMessageWindowHTML('Analytical constituents Content', analyticalHTML)
@@ -1135,13 +1135,13 @@ function analyticalFormatingBtnHandler (iframe, separator) {
 }
 
 
-function additivesFormatingBtnHandler (iframe, separator) {
+function additivesFormatingBtnHandler(iframe, separator) {
 	event.preventDefault()
 	let additivesParagraph = iframe.contentWindow.document.querySelector('body p:nth-child(4)')
 	let additivesHTML = additivesParagraph.innerHTML
 
 	msgBlock = document.querySelector('iframe#snippetIframe').contentWindow.document.getElementById('msgBlock')
-	if(!msgBlock) {
+	if (!msgBlock) {
 		alert('Check window does not exist!!!')
 	} else {
 		setMessageWindowHTML('Nutritional additives Content', additivesHTML)
@@ -1151,7 +1151,7 @@ function additivesFormatingBtnHandler (iframe, separator) {
 }
 
 
-function createMessageWindow () {
+function createMessageWindow() {
 	msgBlock = document.createElement('div')
 	msgBlock.id = 'msgBlock'
 	msgBlock.style.cssText = `
@@ -1165,7 +1165,7 @@ function createMessageWindow () {
 		position: fixed;
 		top: 15vh;
 		display: none;
-	`	
+	`
 	msgBlockHeaderWrapper = document.createElement('div')
 	msgBlockHeaderWrapper.style.cssText = `
 		background-color: #FF0000; 
@@ -1210,7 +1210,7 @@ function createMessageWindow () {
 	msgBlock.appendChild(msgBlockParagraph)
 
 	document.querySelector('iframe#snippetIframe').contentWindow.document
-	.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
+		.querySelector('.layout-region-node-secondary').appendChild(msgBlock)
 }
 
 
