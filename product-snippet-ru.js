@@ -256,6 +256,7 @@ function changePage() {
 	const aliasCheckBox = document.getElementById("snippetIframe").contentWindow.document.querySelector('input[data-drupal-selector="edit-path-0-pathauto"]')
 	if (aliasCheckBox) {
 		aliasCheckBox.checked = false
+		aliasCheckBox.dispatchEvent(new Event('change'))
 	}
 
 	// Set language select field to market language by default when change page in iframe
