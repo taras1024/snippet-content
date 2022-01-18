@@ -833,18 +833,18 @@ function productSizeFormatter() {
 
 	if (copydeckPackSize) {
 		packSizes = copydeckPackSize
-			.split(' ')
+			.split(', ')
 			.filter((val) => /\d/.test(val))
 			.map((val) => {
 				if (val.includes('x')) {
-					return `${val.replace(/[^x0-9\s]/gi, '')}g`
+					return `${val.replace(/[^x0-9\s]/gi, '')} гр`
 					// } else if (val.includes('kg')) {
-				} else if (/kg/i.test(val)) {
+				} else if (/кг/i.test(val)) {
 					let parsedVal = val.replace(/[^0-9\,]/gi, '')
-					return `${parsedVal}kg`
+					return `${parsedVal} кг`
 				} else {
 					let parsedVal = parseInt(val.replace(/[^0-9]/gi, ''))
-					return parsedVal > 1000 ? `${parsedVal / 1000}kg` : `${parsedVal}g`
+					return parsedVal > 1000 ? `${parsedVal / 1000} кг` : `${parsedVal} гр`
 				}
 			})
 		//be in copydeck order
