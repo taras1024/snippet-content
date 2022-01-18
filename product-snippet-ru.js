@@ -838,14 +838,14 @@ function productSizeFormatter() {
 			.filter((val) => /\d/.test(val))
 			.map((val) => {
 				if (val.includes('x')) {
-					return `${val.replace(/[^x0-9\s]/gi, '')} гр`
+					return `${val.replace(/[^x0-9\s]/gi, '')} г`
 					// } else if (val.includes('kg')) {
 				} else if (/кг/i.test(val)) {
 					let parsedVal = val.replace(/[^0-9\,]/gi, '')
 					return `${parsedVal} кг`
 				} else {
 					let parsedVal = parseInt(val.replace(/[^0-9]/gi, ''))
-					return parsedVal > 1000 ? `${parsedVal / 1000} кг` : `${parsedVal} гр`
+					return parsedVal > 1000 ? `${parsedVal / 1000} кг` : `${parsedVal} г`
 				}
 			})
 		//be in copydeck order
