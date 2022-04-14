@@ -31,8 +31,8 @@ const configJSON = `{
  }`
 
 const translations = {
-	features: "Características",
-	ingredients: "Composición",
+	features: "Features...",
+	ingredients: "Ingredients...",
 	analyticalConstituents: "Componentes analíticos",
 	nutritionalAdditives: "Aditivos nutricionales",
 	feedingGuide: "Guía de alimentación"
