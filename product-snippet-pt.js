@@ -31,11 +31,11 @@ const configJSON = `{
  }`
 
 const translations = {
-	features: "Features...",
-	ingredients: "Ingredients...",
-	analyticalConstituents: "Componentes analíticos",
-	nutritionalAdditives: "Aditivos nutricionales",
-	feedingGuide: "Guía de alimentación"
+	features: "Características",
+	ingredients: "Ingredientes Analytical",
+	analyticalConstituents: "Constituintes analíticos",
+	nutritionalAdditives: "Aditivos nutritivos",
+	feedingGuide: "Guia de alimentação"
 }
 /*
  *Snippet GUI start
