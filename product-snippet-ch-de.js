@@ -1,13 +1,25 @@
 const configJSON = `{
 	"customFields":[
 	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
+	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput"},
+	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput"},
+	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput"},
 	  {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-fusepump-wrapper')","editor":"editInput"},
+	  {"name":"newsletter","selector":"getElementById('edit-field-product-newsletter-wrapper')","editor":"editSelect"},
 	  {"name":"headLine","selector":"getElementById('edit-field-product-headline-wrapper')","editor":"editInput"},
 	  {"name":"highlights","selector":"getElementById('edit-field-product-highlight-wrapper')","editor":"editInputsGroup","quantity":4},
 	  {"name":"productSize","selector":"getElementById('edit-field-product-size-wrapper')","editor":"editInputsGroup"},
 	  {"name":"productOverview","selector":"getElementById('edit-field-product-overview-wrapper')","editor":"editEditorsGroup"},
 	  {"name":"ingredientsAndNutrition","selector":"getElementById('edit-field-product-nutrition-wrapper')","editor":"editEditorsGroup"},
 	  {"name":"feedingGuide","selector":"getElementById('edit-field-product-feeding-guide-wrapper')","editor":"editEditorsGroup"},
+	  {"name":"petType","selector":"getElementById('edit-field-product-pet-type-wrapper')","editor":"editRadioBtn"},
+	  {"name":"brand","selector":"getElementById('edit-field-product-brand-wrapper')","editor":"editSelect"},
+	  {"name":"categories","selector":"getElementById('edit-field-product-category-wrapper')","editor":"editSelectsGroup"},
+	  {"name":"lifestages","selector":"getElementById('edit-field-product-lifestage-wrapper')","editor":"editSelectsGroup"},
+	  {"name":"ingredients","selector":"getElementById('edit-field-product-ingredient-wrapper')","editor":"editSelectsGroup"},
+	  {"name":"conditions","selector":"getElementById('edit-field-product-condition-wrapper')","editor":"editSelectsGroup"},
+	  {"name":"specialNeeds","selector":"getElementById('edit-field-product-special-need-wrapper')","editor":"editSelectsGroup"},
+	  {"name":"ranges","selector":"getElementById('edit-field-product-range-wrapper')","editor":"editCheckbox"}
 	],
 	"seoFields":[
 	  {"name":"pageTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-title')[0]","editor":"editSeoField"},
@@ -19,11 +31,11 @@ const configJSON = `{
  }`;
 
 const translations = {
-  features: "Merkmale",
-  ingredients: "Zutaten",
-  analyticalConstituents: "Analytische Bestandteile",
-  nutritionalAdditives: "Ernährungsphysiologische Zusatzstoffe",
-  feedingGuide: "Fütterungsempfehlung",
+  features: "Caractéristiques",
+  ingredients: "Ingrédients",
+  analyticalConstituents: "Constituants analytiques",
+  nutritionalAdditives: "Additifs nutritionnels",
+  feedingGuide: "Guide d’alimentation",
 };
 /*
  *Snippet GUI start
@@ -41,7 +53,6 @@ const snippetControlRightSide = document.createElement("div");
 // const snippetInput = document.createElement('INPUT')
 const snippetInput = document.createElement("TEXTAREA");
 const snippetBtnContainer = document.createElement("div");
-const snippetTopMessageBar = document.createElement("div");
 const snippetAddSeoBtn = document.createElement("button");
 const snippetAddCustomBtn = document.createElement("button");
 const snippetAddAllBtn = document.createElement("button");
@@ -148,8 +159,6 @@ snippetAddAllBtn.innerHTML = "Add all";
 snippetAddAllBtn.style.cssText = `background-color: red; ${snippetBtnStyle}`;
 
 snippetInput.placeholder = "Insert the data from the copydeck here...";
-snippetTopMessageBar.innerText = "THIS IS DE TRANSLATION";
-snippetTopMessageBar.style.cssText = `font-size: 24px; color:red;`;
 
 snippetBtnContainer.style.cssText = ` padding: 0 10px; display:flex;  justify-content:space-between`;
 
@@ -188,11 +197,7 @@ snippetGoBtn.innerHTML = "GO";
 snippetControlContainer.append(snippetControlLeftSide);
 snippetControlContainer.append(snippetControlRightSide);
 
-snippetControlLeftSide.append(
-  snippetInput,
-  snippetBtnContainer,
-  snippetTopMessageBar
-);
+snippetControlLeftSide.append(snippetInput, snippetBtnContainer);
 snippetBtnContainer.append(
   snippetAddSeoBtn,
   snippetAddCustomBtn,
