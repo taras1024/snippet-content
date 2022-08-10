@@ -188,11 +188,7 @@ snippetGoBtn.innerHTML = "GO";
 snippetControlContainer.append(snippetControlLeftSide);
 snippetControlContainer.append(snippetControlRightSide);
 
-snippetControlLeftSide.append(
-  snippetInput,
-  snippetBtnContainer,
-  snippetTopMessageBar
-);
+snippetControlLeftSide.append(snippetInput, snippetBtnContainer);
 snippetBtnContainer.append(
   snippetAddSeoBtn,
   snippetAddCustomBtn,
