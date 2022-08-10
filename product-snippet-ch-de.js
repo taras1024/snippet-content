@@ -148,6 +148,7 @@ snippetAddAllBtn.innerHTML = "Add all";
 snippetAddAllBtn.style.cssText = `background-color: red; ${snippetBtnStyle}`;
 
 snippetTopBarMessage.innerHTML = "THIS IS DE TRANSLATION";
+snippetTopBarMessage.style.cssText = `font-size: 24px; color:red;`;
 
 snippetInput.placeholder = "Insert the data from the copydeck here...";
 
@@ -190,8 +191,8 @@ snippetControlContainer.append(snippetControlRightSide);
 
 snippetControlLeftSide.append(
   snippetInput,
-  snippetBtnContainer,
-  snippetTopBarMessage
+  snippetBtnContainer
+  // snippetTopBarMessage
 );
 snippetBtnContainer.append(
   snippetAddSeoBtn,
