@@ -46,7 +46,7 @@ const snippetAddCustomBtn = document.createElement("button");
 const snippetAddAllBtn = document.createElement("button");
 const snippetMessageContainer = document.createElement("ul");
 const snippetGoBtn = document.createElement("button");
-const snippetTopBarMessage = document.createElement("div");
+// const snippetTopBarMessage = document.createElement("div");
 
 const snippetLoaderContainer = document.createElement("div");
 const snippetLoader = document.createElement("div");
@@ -147,8 +147,8 @@ snippetAddAllBtn.id = "snippetAddAllBtn";
 snippetAddAllBtn.innerHTML = "Add all";
 snippetAddAllBtn.style.cssText = `background-color: red; ${snippetBtnStyle}`;
 
-snippetTopBarMessage.innerHTML = "THIS IS DE TRANSLATION";
-snippetTopBarMessage.style.cssText = `font-size: 24px; color:red;`;
+// snippetTopBarMessage.innerHTML = "THIS IS DE TRANSLATION";
+// snippetTopBarMessage.style.cssText = `font-size: 24px; color:red;`;
 
 snippetInput.placeholder = "Insert the data from the copydeck here...";
 
