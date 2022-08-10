@@ -1,7 +1,6 @@
 const configJSON = `{
 	"customFields":[
 	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
-	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput"},
 	  {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-fusepump-wrapper')","editor":"editInput"},
 	  {"name":"headLine","selector":"getElementById('edit-field-product-headline-wrapper')","editor":"editInput"},
 	  {"name":"highlights","selector":"getElementById('edit-field-product-highlight-wrapper')","editor":"editInputsGroup","quantity":4},
@@ -42,6 +41,7 @@ const snippetControlRightSide = document.createElement("div");
 // const snippetInput = document.createElement('INPUT')
 const snippetInput = document.createElement("TEXTAREA");
 const snippetBtnContainer = document.createElement("div");
+const snippetTopMessageBar = document.createElement("div");
 const snippetAddSeoBtn = document.createElement("button");
 const snippetAddCustomBtn = document.createElement("button");
 const snippetAddAllBtn = document.createElement("button");
@@ -148,6 +148,8 @@ snippetAddAllBtn.innerHTML = "Add all";
 snippetAddAllBtn.style.cssText = `background-color: red; ${snippetBtnStyle}`;
 
 snippetInput.placeholder = "Insert the data from the copydeck here...";
+snippetTopMessageBar.innerHTML = "THIS IS DE TRANSLATION";
+snippetTopMessageBar.style.cssText = `font-size: 24px; color:red;`;
 
 snippetBtnContainer.style.cssText = ` padding: 0 10px; display:flex;  justify-content:space-between`;
 
