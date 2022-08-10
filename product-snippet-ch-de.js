@@ -148,7 +148,7 @@ snippetAddAllBtn.innerHTML = "Add all";
 snippetAddAllBtn.style.cssText = `background-color: red; ${snippetBtnStyle}`;
 
 snippetInput.placeholder = "Insert the data from the copydeck here...";
-snippetTopMessageBar.innerHTML = "THIS IS DE TRANSLATION";
+snippetTopMessageBar.innerText = "THIS IS DE TRANSLATION";
 snippetTopMessageBar.style.cssText = `font-size: 24px; color:red;`;
 
 snippetBtnContainer.style.cssText = ` padding: 0 10px; display:flex;  justify-content:space-between`;
