@@ -20,7 +20,7 @@ const configJSON = `{
 
 const translations = {
   features: "Merkmale",
-  ingredients: "IZutaten",
+  ingredients: "Zutaten",
   analyticalConstituents: "Analytische Bestandteile",
   nutritionalAdditives: "Ernährungsphysiologische Zusatzstoffe",
   feedingGuide: "	Fütterungsempfehlung",
