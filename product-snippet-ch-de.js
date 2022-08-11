@@ -1,6 +1,5 @@
 const configJSON = `{
 	"customFields":[
-	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
 	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput"},
 	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput"},
 	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput"},
