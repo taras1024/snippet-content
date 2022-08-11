@@ -7,7 +7,7 @@ const configJSON = `{
 	  {"name":"productSize","selector":"getElementById('edit-field-product-size-wrapper')","editor":"editInputsGroup"},
 	  {"name":"productOverview","selector":"getElementById('edit-field-product-overview-wrapper')","editor":"editEditorsGroup"},
 	  {"name":"ingredientsAndNutrition","selector":"getElementById('edit-field-product-nutrition-wrapper')","editor":"editEditorsGroup"},
-	  {"name":"feedingGuide","selector":"getElementById('edit-field-product-feeding-guide-wrapper')","editor":"editEditorsGroup"},
+	  {"name":"feedingGuide","selector":"getElementById('edit-field-product-feeding-guide-wrapper')","editor":"editEditorsGroup"}
 	],
 	"seoFields":[
 	  {"name":"pageTitle","selector":"getElementsByClassName('form-item-field-meta-tags-0-basic-title')[0]","editor":"editSeoField"},
