@@ -41,6 +41,7 @@ const snippetControlRightSide = document.createElement("div");
 // const snippetInput = document.createElement('INPUT')
 const snippetInput = document.createElement("TEXTAREA");
 const snippetBtnContainer = document.createElement("div");
+const snippetTopBarMessage = document.createElement("div");
 const snippetAddSeoBtn = document.createElement("button");
 const snippetAddCustomBtn = document.createElement("button");
 const snippetAddAllBtn = document.createElement("button");
@@ -150,6 +151,9 @@ snippetInput.placeholder = "Insert the data from the copydeck here...";
 
 snippetBtnContainer.style.cssText = ` padding: 0 10px; display:flex;  justify-content:space-between`;
 
+snippetTopBarMessage.innerHTML = "This is DE TRANSLATION";
+snippetTopBarMessage.style.cssText = `font-size: 24px; color: red`;
+
 snippetMainContainer.style.cssText = `position: fixed; display:flex; align-items: center;
 												 left: 0; top: 0; width:100%; height: 100%; flex-direction: column;
 												 z-index: 999999; background-color: #121a23; `;
@@ -185,7 +189,11 @@ snippetGoBtn.innerHTML = "GO";
 snippetControlContainer.append(snippetControlLeftSide);
 snippetControlContainer.append(snippetControlRightSide);
 
-snippetControlLeftSide.append(snippetInput, snippetBtnContainer);
+snippetControlLeftSide.append(
+  snippetInput,
+  snippetBtnContainer,
+  snippetTopBarMessage
+);
 snippetBtnContainer.append(
   snippetAddSeoBtn,
   snippetAddCustomBtn,
