@@ -46,7 +46,7 @@ const snippetAddCustomBtn = document.createElement("button");
 const snippetAddAllBtn = document.createElement("button");
 const snippetMessageContainer = document.createElement("ul");
 const snippetGoBtn = document.createElement("button");
-const snippetTopBarMessage = document.createElement("span");
+const snippetTopBarMessage = document.createElement("div");
 
 const snippetLoaderContainer = document.createElement("div");
 const snippetLoader = document.createElement("div");
@@ -190,9 +190,9 @@ snippetControlContainer.append(snippetControlLeftSide);
 snippetControlContainer.append(snippetControlRightSide);
 
 snippetControlLeftSide.append(
+  snippetTopBarMessage,
   snippetInput,
-  snippetBtnContainer,
-  snippetTopBarMessage
+  snippetBtnContainer
 );
 snippetBtnContainer.append(
   snippetAddSeoBtn,
