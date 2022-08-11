@@ -46,7 +46,6 @@ const snippetAddCustomBtn = document.createElement("button");
 const snippetAddAllBtn = document.createElement("button");
 const snippetMessageContainer = document.createElement("ul");
 const snippetGoBtn = document.createElement("button");
-const snippetTopBarMessage = document.createElement("div");
 
 const snippetLoaderContainer = document.createElement("div");
 const snippetLoader = document.createElement("div");
@@ -147,9 +146,6 @@ snippetAddAllBtn.id = "snippetAddAllBtn";
 snippetAddAllBtn.innerHTML = "Add all";
 snippetAddAllBtn.style.cssText = `background-color: red; ${snippetBtnStyle}`;
 
-snippetTopBarMessage.innerHTML = "THIS IS DE TRANSLATION";
-snippetTopBarMessage.style.cssText = `font-size: 24px; color:red;`;
-
 snippetInput.placeholder = "Insert the data from the copydeck here...";
 
 snippetBtnContainer.style.cssText = ` padding: 0 10px; display:flex;  justify-content:space-between`;
@@ -189,11 +185,7 @@ snippetGoBtn.innerHTML = "GO";
 snippetControlContainer.append(snippetControlLeftSide);
 snippetControlContainer.append(snippetControlRightSide);
 
-snippetControlLeftSide.append(
-  snippetTopBarMessage,
-  snippetInput,
-  snippetBtnContainer
-);
+snippetControlLeftSide.append(snippetInput, snippetBtnContainer);
 snippetBtnContainer.append(
   snippetAddSeoBtn,
   snippetAddCustomBtn,
