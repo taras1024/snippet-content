@@ -19,11 +19,11 @@ const configJSON = `{
  }`;
 
 const translations = {
-  features: "Caractéristiques",
-  ingredients: "Ingrédients",
-  analyticalConstituents: "Constituants analytiques",
-  nutritionalAdditives: "Additifs nutritionnels",
-  feedingGuide: "Guide d’alimentation",
+  features: "Merkmale",
+  ingredients: "IZutaten",
+  analyticalConstituents: "Analytische Bestandteile",
+  nutritionalAdditives: "Ernährungsphysiologische Zusatzstoffe",
+  feedingGuide: "	Fütterungsempfehlung",
 };
 /*
  *Snippet GUI start
