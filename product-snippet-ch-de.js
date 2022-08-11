@@ -151,7 +151,7 @@ snippetInput.placeholder = "Insert the data from the copydeck here...";
 
 snippetBtnContainer.style.cssText = ` padding: 0 10px; display:flex;  justify-content:space-between`;
 
-snippetTopBarMessage.innerHTML = "This is DE TRANSLATION";
+snippetTopBarMessage.innerHTML = "THIS IS DE TRANSLATION";
 snippetTopBarMessage.style.cssText = `font-size: 24px; color: red`;
 
 snippetMainContainer.style.cssText = `position: fixed; display:flex; align-items: center;
