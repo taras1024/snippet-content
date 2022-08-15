@@ -411,8 +411,10 @@ async function editEditorsGroup(node, values, numberOfFields = values.length) {
   let editorIFrames = node.querySelectorAll("iframe");
 
   for (const [index, iframe] of editorIFrames.entries()) {
-    let value = values[index] && index < numberOfFields ? values[index] : "";
-    iframe.contentWindow.document.querySelector("body").innerHTML = value;
+    iframe.addEventListener("load", function () {
+      let value = values[index] && index < numberOfFields ? values[index] : "";
+      iframe.contentWindow.document.querySelector("body").innerHTML = value;
+    });
   }
 
   async function waitForChanges() {
