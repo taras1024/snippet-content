@@ -380,33 +380,33 @@ async function setAuthor() {
  *Function for editing block like "PRODUCT OVERVIEW" or "INGREDIENTS & NUTRITION"
  **/
 async function editEditorsGroup(node, values, numberOfFields = values.length) {
-  // const btnNode = node.querySelector("input.paragraphs-icon-button");
+  const btnNode = node.querySelector("input.paragraphs-icon-button");
 
-  // let flag = btnNode.value === "Bewerken" || btnNode.value === "Edit";
+  let flag = btnNode.value === "Bewerken" || btnNode.value === "Edit";
 
-  // if (flag) {
-  //   clickElement(btnNode);
-  //   await checkNodeChanges(node);
-  // } else {
-  //   node
-  //     .querySelector("iframe")
-  //     .contentWindow.document.querySelector("body").innerHTML = values[0];
-  // }
+  if (flag) {
+    clickElement(btnNode);
+    await checkNodeChanges(node);
+  } else {
+    node
+      .querySelector("iframe")
+      .contentWindow.document.querySelector("body").innerHTML = values[0];
+  }
 
-  // const numberOfExtraFields =
-  //   numberOfFields - node.querySelectorAll(".tabledrag-handle").length;
+  const numberOfExtraFields =
+    numberOfFields - node.querySelectorAll(".tabledrag-handle").length;
 
-  // if (numberOfExtraFields > 0) {
-  //   for (let i = 0; i < numberOfExtraFields; i++) {
-  //     clickElement(node.querySelector("input.field-add-more-submit"));
-  //     await checkNodeChanges(
-  //       node.querySelector("input.field-add-more-submit").parentElement
-  //     );
-  //     await waitForChanges();
-  //   }
-  // } else if (flag) {
-  //   await waitForChanges();
-  // }
+  if (numberOfExtraFields > 0) {
+    for (let i = 0; i < numberOfExtraFields; i++) {
+      clickElement(node.querySelector("input.field-add-more-submit"));
+      await checkNodeChanges(
+        node.querySelector("input.field-add-more-submit").parentElement
+      );
+      await waitForChanges();
+    }
+  } else if (flag) {
+    await waitForChanges();
+  }
 
   let editorIFrames = node.querySelectorAll("iframe");
 
