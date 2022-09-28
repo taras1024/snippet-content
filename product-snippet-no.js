@@ -2,7 +2,6 @@ const configJSON = `{
 	"customFields":[
 	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
 	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput"},
-	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput"},
 	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput"},
 	  {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-fusepump-wrapper')","editor":"editInput"},
 	  {"name":"newsletter","selector":"getElementById('edit-field-product-newsletter-wrapper')","editor":"editSelect"},
@@ -727,12 +726,12 @@ function showConsoleCopydeckBasicData() {
     "Special Needs  Local": copydeckData[65],
     "TTT URL Local": copydeckData[66],
     "SEO Title Local": copydeckData[68],
-    "SEO Description Local": copydeckData[70],
-    "OG Title Local": copydeckData[72],
-    "OG Description Local": copydeckData[74],
-    "Footer Newsletter Local": copydeckData[76],
-    "Taxonomy terms / Tagging Local": copydeckData[78],
-    "Related 4 Prods Local": copydeckData[80],
+    "SEO Description Local": copydeckData[71],
+    "OG Title Local": copydeckData[74],
+    "OG Description Local": copydeckData[76],
+    "Footer Newsletter Local": copydeckData[78],
+    "Taxonomy terms / Tagging Local": copydeckData[80],
+    "Related 4 Prods Local": copydeckData[82],
   };
 
   var str = JSON.stringify(copydeckBasicData, null, 4);
@@ -796,7 +795,7 @@ function buyNowFusepumpFormatter() {
 
 function newsletterFormatter() {
   const copydecPetType = copydeckData[16]; //old 16
-  const copydecNewsletter = copydeckData[76];
+  const copydecNewsletter = copydeckData[78];
 
   return copydecPetType && copydecNewsletter
     ? [copydecPetType, copydecNewsletter]
@@ -1046,19 +1045,19 @@ function pageTitleFormatter() {
   return seoTitle ? seoTitle : "";
 }
 function pageDescriptionFormatter() {
-  const seoDescription = copydeckData[70]; //old 68
+  const seoDescription = copydeckData[71]; //old 68
   return seoDescription ? seoDescription : "";
 }
 function openGraphTitleFormatter() {
-  const seoOGTitle = copydeckData[72]; //old 70
+  const seoOGTitle = copydeckData[74]; //old 70
   return seoOGTitle ? seoOGTitle : "";
 }
 function openGraphDescriptionFormatter() {
-  const seoOGDescription = copydeckData[74]; //old 72
+  const seoOGDescription = copydeckData[76]; //old 72
   return seoOGDescription ? seoOGDescription : "";
 }
 function urlAliasFormatter() {
-  const urlAlias = copydeckData[8];
+  const urlAlias = copydeckData[66]; //was 8
   return urlAlias ? urlAlias : "";
 }
 
