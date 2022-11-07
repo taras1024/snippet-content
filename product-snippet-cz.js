@@ -1057,7 +1057,7 @@ function openGraphDescriptionFormatter() {
   return seoOGDescription ? seoOGDescription : "";
 }
 function urlAliasFormatter() {
-  const urlAlias = copydeckData[8];
+  const urlAlias = copydeckData[66];
   return urlAlias ? urlAlias : "";
 }
 
