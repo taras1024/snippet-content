@@ -694,7 +694,7 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 function showConsoleCopydeckBasicData() {
   copydeckBasicData = {
     "Product Title Local": copydeckData[6],
-    "TTT URL Match": copydeckData[8],
+    "TTT URL Match": copydeckData[66],
     "GTIN Local": copydeckData[10],
     "bvID Local": copydeckData[11],
     "fpID Local": copydeckData[12],
