@@ -31,11 +31,11 @@ const configJSON = `{
  }`
 
 const translations = {
-	features: "Egenskaper",
-	ingredients: "Ingredienser",
-	analyticalConstituents: "Analytiska beståndsdelar",
-	nutritionalAdditives: "Näringstillsatser",
-	feedingGuide: "Utfodringsguide"
+	features: "Особливості",
+	ingredients: "Інгредієнти",
+	analyticalConstituents: "Аналітичний склад",
+	nutritionalAdditives: "Поживні кормові добавки",
+	feedingGuide: "Рекомендації щодо годівлі"
 }
 /*
  *Snippet GUI start
