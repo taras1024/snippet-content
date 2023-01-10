@@ -31,11 +31,11 @@ const configJSON = `{
  }`
 
 const translations = {
-	features: "Особливості",
-	ingredients: "Інгредієнти",
-	analyticalConstituents: "Аналітичний склад",
-	nutritionalAdditives: "Поживні кормові добавки",
-	feedingGuide: "Рекомендації щодо годівлі"
+	features: "Egenskaper",
+	ingredients: "Ingredienser",
+	analyticalConstituents: "Analytiska beståndsdelar",
+	nutritionalAdditives: "Näringstillsatser",
+	feedingGuide: "Utfodringsguide"
 }
 /*
  *Snippet GUI start
@@ -1036,7 +1036,7 @@ function openGraphDescriptionFormatter() {
 	return seoOGDescription ? seoOGDescription : ''
 }
 function urlAliasFormatter() {
-	const urlAlias = copydeckData[66]
+	const urlAlias = copydeckData[8]
 	return urlAlias ? urlAlias : ''
 }
 
