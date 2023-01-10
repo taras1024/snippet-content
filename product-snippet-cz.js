@@ -2,7 +2,6 @@ const configJSON = `{
 	"customFields":[
 	  {"name":"internalTitle","selector":"getElementById('edit-title-wrapper')","editor":"editInput"},
 	  {"name":"externalTitle","selector":"getElementById('edit-field-product-label-wrapper')","editor":"editInput"},
-	  {"name":"bazaavoiceProductID","selector":"getElementById('edit-field-product-bv-id-wrapper')","editor":"editInput"},
 	  {"name":"GTIN","selector":"getElementById('edit-field-dsu-sku-wrapper')","editor":"editInput"},
 	  {"name":"buyNowFusepump","selector":"getElementById('edit-field-product-fusepump-wrapper')","editor":"editInput"},
 	  {"name":"newsletter","selector":"getElementById('edit-field-product-newsletter-wrapper')","editor":"editSelect"},
@@ -695,7 +694,7 @@ function showFoundedOrNotFoundedValue(node, values, addedOrNotAddedColor) {
 function showConsoleCopydeckBasicData() {
   copydeckBasicData = {
     "Product Title Local": copydeckData[6],
-    "TTT URL Match": copydeckData[8],
+    "TTT URL Match": copydeckData[66],
     "GTIN Local": copydeckData[10],
     "bvID Local": copydeckData[11],
     "fpID Local": copydeckData[12],
@@ -1058,7 +1057,7 @@ function openGraphDescriptionFormatter() {
   return seoOGDescription ? seoOGDescription : "";
 }
 function urlAliasFormatter() {
-  const urlAlias = copydeckData[8];
+  const urlAlias = copydeckData[66];
   return urlAlias ? urlAlias : "";
 }
 
