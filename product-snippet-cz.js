@@ -30,9 +30,12 @@ const configJSON = `{
  }`;
 
 const translations = {
-  features: "Funkce",
-  ingredients: "Ingredience",
-  analyticalConstituents: "Výživa a analytické složky",
+  // features: "Funkce",
+  features: "Klíčové výhody produktu",
+  // ingredients: "Ingredience",
+  ingredients: "Složení",
+  // analyticalConstituents: "Výživa a analytické složky",
+  analyticalConstituents: "Analytické složky",
   nutritionalAdditives: "Nutriční doplňkové látky",
   feedingGuide: "Krmný návod",
 };
